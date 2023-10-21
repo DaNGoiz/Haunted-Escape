@@ -46,7 +46,8 @@ void generateBlankSpace(CharArray2D& map) {
             }
 }
 
-void removeSingleWall(CharArray2D& map) {
+// clean unnecessary obstacles and return number of blank space of the map
+int removeSingleWall(CharArray2D& map) {
     int blank = 0;
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
@@ -61,12 +62,18 @@ void removeSingleWall(CharArray2D& map) {
             } 
             else if (map[i][j] == '\0')
                 blank ++;
-    cout << "blank block count: " << blank << endl; // test
+    // cout << "blank block count: " << blank << endl; // test
+    return blank;
 }
 
-void provePathIsConnected(CharArray2D& map) {
+bool provePathIsConnected(CharArray2D& map) {
     // prove the roads are connected (if no then regenerate walls)
     // blank space <= 1000 regen
+    bool isConnected = false; 
+    
+    isConnected = true; // deubg
+
+    return isConnected;
 }
 
 void generateWalls(CharArray2D& map) {
@@ -140,10 +147,16 @@ void generatePlayerAndDoorAndKey(CharArray2D& map) {
 
 // generate a random map
 void generateRandomMap(CharArray2D& map) {
-    initializeMap(map);
-    generateBlankSpace(map);
-    removeSingleWall(map);
-    provePathIsConnected(map);
+    int moveableSpace = 0;
+    bool isConnected = false;
+
+    while(!isConnected || moveableSpace < 1000)
+    {
+        initializeMap(map);
+        generateBlankSpace(map);
+        moveableSpace = removeSingleWall(map);
+        isConnected = provePathIsConnected(map);
+    }
 
     generateWalls(map);
     generateGround(map);
