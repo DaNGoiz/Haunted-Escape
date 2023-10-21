@@ -8,13 +8,14 @@ const int mapY = 100;
 
 using CharArray2D = char[25][100];
 
-// initialize map with '-'
-void initializeMap(CharArray2D& map) {
+// initialize map
+void initializeMap(CharArray2D& map, char c) {
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
-            map[i][j] = '-';
+            map[i][j] = c;
 }
 
+// generate map blank space
 void generateBlankSpace(CharArray2D& map) {
     bool firstGen = true;
     for (int i = 0; i < mapX; ++i)
@@ -66,9 +67,8 @@ int removeSingleWall(CharArray2D& map) {
     return blank;
 }
 
+// prove the roads are connected
 bool provePathIsConnected(CharArray2D& map) {
-    // prove the roads are connected (if no then regenerate walls)
-    // blank space <= 1000 regen
     bool isConnected = false; 
     
     isConnected = true; // deubg
@@ -76,6 +76,7 @@ bool provePathIsConnected(CharArray2D& map) {
     return isConnected;
 }
 
+// turn the outside walls to X
 void generateWalls(CharArray2D& map) {
     bool needToChange[25][100] = {}; // hardcode
 
@@ -95,9 +96,9 @@ void generateWalls(CharArray2D& map) {
             }
         }
     }
-
 }
 
+// generate grass
 void generateGround(CharArray2D& map) {
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
@@ -112,10 +113,7 @@ void generateGround(CharArray2D& map) {
                     map[i][j] = ' ';
 }
 
-void genereateItems(CharArray2D& map) {
-    // items
-}
-
+// generate necessary elements: player, door, key
 void generatePlayerAndDoorAndKey(CharArray2D& map) {
     // generate random born point
     map[rand() % mapX][rand() % mapY] = '@';
@@ -132,7 +130,7 @@ void generatePlayerAndDoorAndKey(CharArray2D& map) {
         map[rand()%(mapX - 2) + 1][mapY] = '#';
 
     // generate the only key
-    // what if not generated?
+    // debug: what if not generated?
     bool hasKey = false;
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
@@ -145,6 +143,11 @@ void generatePlayerAndDoorAndKey(CharArray2D& map) {
                     }
 }
 
+// generate items: shop, spike, health pack etc.
+void genereateItems(CharArray2D& map) {
+    // items
+}
+
 // generate a random map
 void generateRandomMap(CharArray2D& map) {
     int moveableSpace = 0;
@@ -152,7 +155,7 @@ void generateRandomMap(CharArray2D& map) {
 
     while(!isConnected || moveableSpace < 1000)
     {
-        initializeMap(map);
+        initializeMap(map, '-');
         generateBlankSpace(map);
         moveableSpace = removeSingleWall(map);
         isConnected = provePathIsConnected(map);
@@ -160,9 +163,9 @@ void generateRandomMap(CharArray2D& map) {
 
     generateWalls(map);
     generateGround(map);
-    genereateItems(map);
     
     generatePlayerAndDoorAndKey(map);
+    genereateItems(map);
 }
 
 // set color and print map elements
@@ -179,6 +182,7 @@ void printMapElement(char element) {
         cout << element;
 }
 
+// print the map on console
 void printMap(const CharArray2D& map) {
     for (int i = 0; i < mapX; ++i) {
         for (int j = 0; j < mapY; ++j) {
