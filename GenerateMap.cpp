@@ -78,6 +78,66 @@ bool provePathIsConnected(CharArray2D& map) {
     return isConnected;
 }
 
+// // define four direction movement
+// int dx[] = {1, -1, 0, 0};
+// int dy[] = {0, 0, 1, -1};
+
+// // check the position is inside map
+// bool isValid(int x, int y) {
+//     return x >= 0 && x < mapX && y >= 0 && y < mapY;
+// }
+
+// // DFS go through all blank space
+// void dfs(int x, int y, CharArray2D map, bool visited[mapX][mapY]) {
+//     visited[x][y] = true;
+//     for (int i = 0; i < 4; i++) {
+//         int newX = x + dx[i];
+//         int newY = y + dy[i];
+//         if (isValid(newX, newY) && map[newX][newY] == ' ' && !visited[newX][newY]) {
+//             dfs(newX, newY, map, visited);
+//         }
+//     }
+// }
+
+// // check is blank space connected
+// bool isBlankSpaceConnected(CharArray2D& map) {
+
+//     cout << "enter function";
+
+//     bool visited[mapX][mapY];
+//     // initialize vizited array
+//     for (int i = 0; i < mapX; i++) {
+//         for (int j = 0; j < mapY; j++) {
+//             visited[i][j] = false;
+//         }
+//     }
+
+//     // find the first blank place to dfs
+//     int startX, startY;
+//     for (int i = 0; i < mapX; i++) {
+//         for (int j = 0; j < mapY; j++) {
+//             if (map[i][j] == ' ') {
+//                 startX = i;
+//                 startY = j;
+//                 break;
+//             }
+//         }
+//     }
+
+//     dfs(startX, startY, map, visited);
+
+//     // check if all blank spaces can be visited
+//     for (int i = 0; i < mapX; i++) {
+//         for (int j = 0; j < mapY; j++) {
+//             if (map[i][j] == ' ' && !visited[i][j]) {
+//                 return false;
+//             }
+//         }
+//     }
+
+//     return true;
+// }
+
 // turn the outside walls to X
 void generateWalls(CharArray2D& map) {
     bool needToChange[25][100] = {}; // hardcode
@@ -193,6 +253,7 @@ void generateRandomMap(CharArray2D& map) {
         initializeMap(map, '-');
         generateBlankSpace(map);
         cleanAndGetBlankSpace(map, blankSpaceArr, moveableSpace);
+        // isConnected = isBlankSpaceConnected(map);
         isConnected = provePathIsConnected(map);
     }
         
