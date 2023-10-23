@@ -47,24 +47,26 @@ void generateBlankSpace(CharArray2D& map) {
             }
 }
 
-// clean unnecessary obstacles and return number of blank space of the map
-int removeSingleWall(CharArray2D& map) {
-    int blank = 0;
+// clean unnecessary obstacles
+// return number of blank space and array of blank space index of the map
+void cleanAndGetBlankSpace(CharArray2D& map, int blankSpace[mapX][mapY], int& numBlank) {
+    numBlank = 0;
+
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
             if (map[i][j] == '-' &&
-            (i - 1 >= 0 && map[i - 1][j] != '-') && 
-            (i + 1 < mapX && map[i + 1][j] != '-') && 
-            (j - 1 >= 0 && map[i][j - 1] != '-') && 
-            (j + 1 < mapY && map[i][j + 1] != '-'))
-            {
+                (i - 1 >= 0 && map[i - 1][j] != '-') && 
+                (i + 1 < mapX && map[i + 1][j] != '-') && 
+                (j - 1 >= 0 && map[i][j - 1] != '-') && 
+                (j + 1 < mapY && map[i][j + 1] != '-')) {
                 map[i][j] = '\0';
-                blank ++;
-            } 
-            else if (map[i][j] == '\0')
-                blank ++;
-    // cout << "blank block count: " << blank << endl; // test
-    return blank;
+                blankSpace[i][j] = 1;
+                numBlank++;
+            } else if (map[i][j] == '\0') {
+                blankSpace[i][j] = 1;
+                numBlank++;
+            } else
+                blankSpace[i][j] = 0;
 }
 
 // prove the roads are connected
@@ -113,35 +115,81 @@ void generateGround(CharArray2D& map) {
                     map[i][j] = ' ';
 }
 
-// generate necessary elements: player, door, key
-void generatePlayerAndDoorAndKey(CharArray2D& map) {
-    // generate random born point
-    map[rand() % mapX][rand() % mapY] = '@';
 
-    // generate a gate at map border
-    int border = rand()%4 + 1;
-    if(border == 1)
-        map[0][rand()%(mapY - 2) + 1] = '#';
-    else if(border == 2)
-        map[mapX - 1][rand()%(mapY - 2) + 1] = '#';
-    else if(border == 3)
-        map[rand()%(mapX - 2) + 1][0] = '#';
-    else if(border == 4)
-        map[rand()%(mapX - 2) + 1][mapY] = '#';
+void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
 
-    // generate the only key
-    // debug: what if not generated?
-    bool hasKey = false;
-    for (int i = 0; i < mapX; ++i)
-        for (int j = 0; j < mapY; ++j)
-            if (!hasKey)
-                if (map[i][j] != '-' || map[i][j] != 'X' || map[i][j] != '@' || map[i][j] != '#')
-                    if(rand()%2250 == 0)
-                    {
-                        map[i][j] = '!';
-                        hasKey = true;
-                    }
+    // generate door (#)
+    int doorX, doorY;
+    do {
+        int boundary = rand() % 4;
+        if (boundary == 0) {
+            doorX = 0;
+            doorY = rand() % (mapY - 2) + 1;
+        } else if (boundary == 1) {
+            doorX = mapX - 1;
+            doorY = rand() % (mapY - 2) + 1;
+        } else if (boundary == 2) {
+            doorX = rand() % (mapX - 2) + 1;
+            doorY = 0;
+        } else {
+            doorX = rand() % (mapX - 2) + 1;
+            doorY = mapY - 1;
+        }
+    } while (blankSpace[doorX][doorY] == 0);
+
+    map[doorX][doorY] = '#';
+    blankSpace[doorX][doorY] = 0;
+
+    // generate key (!)
+    int keyX, keyY;
+    do {
+        keyX = rand() % (mapX - 2) + 1;
+        keyY = rand() % (mapY - 2) + 1;
+    } while (blankSpace[keyX][keyY] == 0 || (keyX == doorX && keyY == doorY));
+
+    map[keyX][keyY] = '!';
+    blankSpace[keyX][keyY] = 0;
+
+    // generate player (@)
+    int playerX, playerY;
+    do {
+        playerX = rand() % (mapX - 2) + 1;
+        playerY = rand() % (mapY - 2) + 1;
+    } while (blankSpace[playerX][playerY] == 0 || (playerX == doorX && playerY == doorY) || (playerX == keyX && playerY == keyY));
+
+    map[playerX][playerY] = '@';
+    blankSpace[playerX][playerY] = 0;
 }
+
+// generate necessary elements: player, door, key
+// void generatePlayerAndDoorAndKey(CharArray2D& map, int blankSpace[mapX][mapY]) {
+//     // generate random born point
+//     map[rand() % mapX][rand() % mapY] = '@';
+
+//     // generate a gate at map border
+//     int border = rand()%4 + 1;
+//     if(border == 1)
+//         map[0][rand()%(mapY - 2) + 1] = '#';
+//     else if(border == 2)
+//         map[mapX - 1][rand()%(mapY - 2) + 1] = '#';
+//     else if(border == 3)
+//         map[rand()%(mapX - 2) + 1][0] = '#';
+//     else if(border == 4)
+//         map[rand()%(mapX - 2) + 1][mapY] = '#';
+
+//     // generate the only key
+//     // debug: what if not generated?
+//     bool hasKey = false;
+//     for (int i = 0; i < mapX; ++i)
+//         for (int j = 0; j < mapY; ++j)
+//             if (!hasKey)
+//                 if (map[i][j] != '-' || map[i][j] != 'X' || map[i][j] != '@' || map[i][j] != '#')
+//                     if(rand()%2250 == 0)
+//                     {
+//                         map[i][j] = '!';
+//                         hasKey = true;
+//                     }
+// }
 
 // generate items: shop, spike, health pack etc.
 void genereateItems(CharArray2D& map) {
@@ -151,20 +199,29 @@ void genereateItems(CharArray2D& map) {
 // generate a random map
 void generateRandomMap(CharArray2D& map) {
     int moveableSpace = 0;
+    int blankSpaceArr[25][100];
     bool isConnected = false;
 
     while(!isConnected || moveableSpace < 1000)
     {
         initializeMap(map, '-');
         generateBlankSpace(map);
-        moveableSpace = removeSingleWall(map);
+        cleanAndGetBlankSpace(map, blankSpaceArr, moveableSpace);
         isConnected = provePathIsConnected(map);
     }
 
+    for (int i = 0; i < mapX; ++i)
+    {
+        for (int j = 0; j < mapY; ++j)
+            cout << blankSpaceArr[i][j];
+        cout << endl;
+    }
+        
+    
     generateWalls(map);
     generateGround(map);
     
-    generatePlayerAndDoorAndKey(map);
+    generateMapElements(map, blankSpaceArr);
     genereateItems(map);
 }
 
