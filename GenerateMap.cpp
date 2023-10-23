@@ -117,7 +117,6 @@ void generateGround(CharArray2D& map) {
 
 
 void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
-
     // generate door (#)
     int doorX, doorY;
     do {
@@ -161,39 +160,19 @@ void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
     blankSpace[playerX][playerY] = 0;
 }
 
-// generate necessary elements: player, door, key
-// void generatePlayerAndDoorAndKey(CharArray2D& map, int blankSpace[mapX][mapY]) {
-//     // generate random born point
-//     map[rand() % mapX][rand() % mapY] = '@';
-
-//     // generate a gate at map border
-//     int border = rand()%4 + 1;
-//     if(border == 1)
-//         map[0][rand()%(mapY - 2) + 1] = '#';
-//     else if(border == 2)
-//         map[mapX - 1][rand()%(mapY - 2) + 1] = '#';
-//     else if(border == 3)
-//         map[rand()%(mapX - 2) + 1][0] = '#';
-//     else if(border == 4)
-//         map[rand()%(mapX - 2) + 1][mapY] = '#';
-
-//     // generate the only key
-//     // debug: what if not generated?
-//     bool hasKey = false;
-//     for (int i = 0; i < mapX; ++i)
-//         for (int j = 0; j < mapY; ++j)
-//             if (!hasKey)
-//                 if (map[i][j] != '-' || map[i][j] != 'X' || map[i][j] != '@' || map[i][j] != '#')
-//                     if(rand()%2250 == 0)
-//                     {
-//                         map[i][j] = '!';
-//                         hasKey = true;
-//                     }
-// }
-
 // generate items: shop, spike, health pack etc.
-void genereateItems(CharArray2D& map) {
-    // items
+void generateItems(CharArray2D& map, int blankSpace[mapX][mapY]) {
+
+    const char items[] = {'$', '+', '▲', '▄'}; // gold, health, spike, shop
+
+    for (int i = 0; i < mapX; ++i) {
+        for (int j = 0; j < mapY; ++j) {
+            if (blankSpace[i][j] == 0) {
+                int itemIndex = rand() % 4; // 4 items
+                map[i][j] = items[itemIndex];
+            }
+        }
+    }
 }
 
 // generate a random map
@@ -222,18 +201,22 @@ void generateRandomMap(CharArray2D& map) {
     generateGround(map);
     
     generateMapElements(map, blankSpaceArr);
-    genereateItems(map);
+    generateItems(map, blankSpaceArr);
 }
 
 // set color and print map elements
 void printMapElement(char element) {
-    if (element == '@')
+    if (element == '@' || element == '$' || element == '▄')
         cout << "\x1b[33m" << element << "\x1b[0m";
     else if (element == '\'' || element == '"' || element == '`')
         cout << "\x1b[32m" << element << "\x1b[0m";
     else if (element == '#' || element == '!')
-        cout << "\x1b[36m" << element << "\x1b[0m";
+        cout << "\x1b[46m" << element << "\x1b[0m";
     else if (element == 'X')
+        cout << "\x1b[90m" << element << "\x1b[0m";
+    else if (element == '+')
+        cout << "\x1b[31m" << element << "\x1b[0m";
+    else if (element == '▲')
         cout << "\x1b[90m" << element << "\x1b[0m";
     else
         cout << element;
