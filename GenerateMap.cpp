@@ -101,7 +101,7 @@ void generateWalls(CharArray2D& map) {
 }
 
 // generate grass
-void generateGround(CharArray2D& map) {
+void generateGrass(CharArray2D& map) {
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
             if (map[i][j] == '\0')
@@ -163,13 +163,19 @@ void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
 // generate items: shop, spike, health pack etc.
 void generateItems(CharArray2D& map, int blankSpace[mapX][mapY]) {
 
-    const char items[] = {'$', '+', '▲', '▄'}; // gold, health, spike, shop
+    int propTotal = 500;
+    int propMax = 3;
+
+    const char items[] = {'$', '+', '^', '='}; // gold, health, spike, shop
 
     for (int i = 0; i < mapX; ++i) {
         for (int j = 0; j < mapY; ++j) {
-            if (blankSpace[i][j] == 0) {
-                int itemIndex = rand() % 4; // 4 items
-                map[i][j] = items[itemIndex];
+            if (blankSpace[i][j] == 1) {
+                if (rand() % propTotal <= propMax)
+                {
+                    int itemIndex = rand() % 4; // 4 items
+                    map[i][j] = items[itemIndex];
+                }
             }
         }
     }
@@ -177,6 +183,7 @@ void generateItems(CharArray2D& map, int blankSpace[mapX][mapY]) {
 
 // generate a random map
 void generateRandomMap(CharArray2D& map) {
+    //generate blank map
     int moveableSpace = 0;
     int blankSpaceArr[25][100];
     bool isConnected = false;
@@ -188,25 +195,21 @@ void generateRandomMap(CharArray2D& map) {
         cleanAndGetBlankSpace(map, blankSpaceArr, moveableSpace);
         isConnected = provePathIsConnected(map);
     }
-
-    for (int i = 0; i < mapX; ++i)
-    {
-        for (int j = 0; j < mapY; ++j)
-            cout << blankSpaceArr[i][j];
-        cout << endl;
-    }
         
-    
+    // generate terrain
     generateWalls(map);
-    generateGround(map);
+    generateGrass(map);
     
+    // generate objects
     generateMapElements(map, blankSpaceArr);
     generateItems(map, blankSpaceArr);
 }
 
 // set color and print map elements
 void printMapElement(char element) {
-    if (element == '@' || element == '$' || element == '▄')
+    if (element == '@')
+        cout << "\x1b[43m" << element << "\x1b[0m";
+    else if (element == '$' || element == '=')
         cout << "\x1b[33m" << element << "\x1b[0m";
     else if (element == '\'' || element == '"' || element == '`')
         cout << "\x1b[32m" << element << "\x1b[0m";
@@ -216,7 +219,7 @@ void printMapElement(char element) {
         cout << "\x1b[90m" << element << "\x1b[0m";
     else if (element == '+')
         cout << "\x1b[31m" << element << "\x1b[0m";
-    else if (element == '▲')
+    else if (element == '^')
         cout << "\x1b[90m" << element << "\x1b[0m";
     else
         cout << element;
