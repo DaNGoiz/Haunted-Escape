@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 
+
 using namespace std;
 
 const int mapX = 25;
@@ -262,41 +263,13 @@ void generateRandomMap(CharArray2D& map) {
     generateItems(map, blankSpaceArr);
 }
 
-// set color and print map elements
-void printMapElement(char element) {
-    if (element == '@')
-        cout << "\x1b[43;30m" << element << "\x1b[0m";
-    else if (element == '$' || element == '=')
-        cout << "\x1b[33m" << element << "\x1b[0m";
-    else if (element == '\'' || element == '"' || element == '`')
-        cout << "\x1b[32m" << element << "\x1b[0m";
-    else if (element == '#' || element == '!')
-        cout << "\x1b[46;30m" << element << "\x1b[0m";
-    else if (element == 'X')
-        cout << "\x1b[90m" << element << "\x1b[0m";
-    else if (element == '+')
-        cout << "\x1b[31m" << element << "\x1b[0m";
-    else if (element == '^') // different color
-        cout << "\x1b[31m" << element << "\x1b[0m";
-    else
-        cout << element;
-}
 
-// print the map on console
-void printMap(const CharArray2D& map) {
-    for (int i = 0; i < mapX; ++i) {
-        for (int j = 0; j < mapY; ++j) {
-            printMapElement(map[i][j]);
-        }
-        cout << "|" << endl;
-    }
-}
 
-int main() {
-    CharArray2D map = {}; // in outside classes also use
+// int main() {
+//     CharArray2D map = {}; // in outside classes also use
 
-    generateRandomMap(map);
-    printMap(map);
+//     generateRandomMap(map);
+//     printMap(map);
 
-    return 0;
-}
+//     return 0;
+// }
