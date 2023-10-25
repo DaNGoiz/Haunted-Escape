@@ -1,4 +1,7 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+
 #include "generate_map.h"
 
 using namespace std;
@@ -12,7 +15,7 @@ void getMapDataAll() {
 }
 
 void getMapDataAtPoint() {
-    
+
 }
 
 
@@ -42,7 +45,7 @@ void printMap(const CharArray2D& map) {
         for (int j = 0; j < mapY; ++j) {
             printMapElement(map[i][j]);
         }
-        cout << "|" << endl;
+        cout << endl;
     }
 }
 
@@ -52,6 +55,40 @@ int main() {
     generateRandomMap(map);
     printMap(map);
 
+    // input
+    ofstream outfile("map.log");
+
+    if (outfile.is_open()) {
+        for (int i = 0; i < 25; i++) {
+            for (int j = 0; j < 100; j++) {
+                outfile << map[i][j];
+            }
+            outfile << endl;
+        }
+
+        outfile.close();
+    }
+
+    // read
+    ifstream infile("map.log");
+
+    if (infile.is_open()) {
+        string file_contents((istreambuf_iterator<char>(infile)),
+            istreambuf_iterator<char>());
+
+        int row = 0;
+        int col = 0;
+        for (char c : file_contents) {
+            if (c == '\n') {
+                map[row][col] = '\0';
+                row++;
+                col = 0;
+            } else {
+                map[row][col] = c;
+                col++;
+            }
+        }
+    }
 
     return 0;
 }
