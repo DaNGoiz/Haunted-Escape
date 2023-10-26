@@ -1,25 +1,22 @@
 #include <iostream>
 #include <ctime>
 
-
 using namespace std;
 
 const int mapX = 25;
 const int mapY = 100;
 
-using CharArray2D = char[25][100];
-
 bool needToChange[25][100] = {}; // hardcode
 
-// initialize map
-void initializeMap(CharArray2D& map, char c) {
+// Initialize map
+void initializeMap(char map[25][100], char c) {
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
             map[i][j] = c;
 }
 
-// generate map blank space
-void generateBlankSpace(CharArray2D& map) {
+// Generate map blank space
+void generateBlankSpace(char map[25][100]) {
     bool firstGen = true;
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
@@ -35,24 +32,24 @@ void generateBlankSpace(CharArray2D& map) {
             {
                 int jZero = 0;
                 if (i == 0)
-                    if (rand()%50 == 0)
+                    if (rand() % 50 == 0)
                     {
                         map[i][j] = '\0';
                         jZero = j;
                     }
-                else
-                    if (j <= jZero)
-                        if (rand()%1 == 0)
-                            map[i][j] = '\0';
                     else
-                        if (rand()%10 == 0)
-                            map[i][j] = '\0';
+                        if (j <= jZero)
+                            if (rand() % 1 == 0)
+                                map[i][j] = '\0';
+                        else
+                            if (rand() % 10 == 0)
+                                map[i][j] = '\0';
             }
 }
 
-// clean unnecessary obstacles
-// return number of blank space and array of blank space index of the map
-void cleanAndGetBlankSpace(CharArray2D& map, int blankSpace[mapX][mapY], int& numBlank) {
+// Clean unnecessary obstacles
+// Return number of blank spaces and array of blank space index of the map
+void cleanAndGetBlankSpace(char map[25][100], int blankSpace[25][100], int& numBlank) {
     numBlank = 0;
 
     for (int i = 0; i < mapX; ++i)
@@ -72,19 +69,17 @@ void cleanAndGetBlankSpace(CharArray2D& map, int blankSpace[mapX][mapY], int& nu
                 blankSpace[i][j] = 0;
 }
 
-// prove the roads are connected
-
-// define four direction movement
+// Define four direction movement
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
 
-// check the position is inside map
+// Check if the position is inside the map
 bool isValid(int x, int y) {
     return x >= 0 && x < mapX && y >= 0 && y < mapY;
 }
 
-// go through all blank spaces
-void dfs(int x, int y, CharArray2D map, bool visited[mapX][mapY]) {
+// Go through all blank spaces
+void dfs(int x, int y, char map[25][100], bool visited[25][100]) {
     visited[x][y] = true;
     for (int i = 0; i < 4; i++) {
         int newX = x + dx[i];
@@ -95,17 +90,16 @@ void dfs(int x, int y, CharArray2D map, bool visited[mapX][mapY]) {
     }
 }
 
-// check is blank spaces connected
-bool isBlankSpaceConnected(CharArray2D& map) {
-
-    bool visited[mapX][mapY];
+// Check if blank spaces are connected
+bool isBlankSpaceConnected(char map[25][100]) {
+    bool visited[25][100];
     for (int i = 0; i < mapX; i++) {
         for (int j = 0; j < mapY; j++) {
             visited[i][j] = false;
         }
     }
 
-    // find the first blank place to dfs
+    // Find the first blank place to dfs
     int startX, startY;
     for (int i = 0; i < mapX; i++) {
         for (int j = 0; j < mapY; j++) {
@@ -119,7 +113,7 @@ bool isBlankSpaceConnected(CharArray2D& map) {
 
     dfs(startX, startY, map, visited);
 
-    // check if all blank spaces can be visited
+    // Check if all blank spaces can be visited
     for (int i = 0; i < mapX; i++) {
         for (int j = 0; j < mapY; j++) {
             if (map[i][j] == ' ' && !visited[i][j]) {
@@ -131,8 +125,8 @@ bool isBlankSpaceConnected(CharArray2D& map) {
     return true;
 }
 
-// turn the outside walls to char 'X'
-void generateWalls(CharArray2D& map) { 
+// Turn the outside walls to char 'X'
+void generateWalls(char map[25][100]) { 
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
             if (map[i][j] == '-')
@@ -151,24 +145,25 @@ void generateWalls(CharArray2D& map) {
     }
 }
 
-// generate grass
-void generateGrass(CharArray2D& map) {
-    for (int i = 0; i < mapX; ++i)
-        for (int j = 0; j < mapY; ++j)
-            if (map[i][j] == '\0')
-                if(rand()%25 == 5)
+void generateGrass(char map[25][100]) {
+    for (int i = 0; i < mapX; ++i) {
+        for (int j = 0; j < mapY; ++j) {
+            if (map[i][j] == '\0') {
+                if (rand() % 25 == 5)
                     map[i][j] = '"';
-                else if(rand()%25 == 6)
+                else if (rand() % 25 == 6)
                     map[i][j] = '\'';
-                else if(rand()%25 == 7)
+                else if (rand() % 25 == 7)
                     map[i][j] = '`';
                 else
                     map[i][j] = ' ';
+            }
+        }
+    }
 }
 
-
-void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
-    // generate door (#)
+void generateMapElements(char map[25][100], int blankSpace[25][100]) {
+    // Generate door (#)
     int doorX, doorY;
     do {
         int boundary = rand() % 4;
@@ -190,7 +185,7 @@ void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
     map[doorX][doorY] = '#';
     blankSpace[doorX][doorY] = 0;
 
-    // generate key (!)
+    // Generate key (!)
     int keyX, keyY;
     do {
         keyX = rand() % (mapX - 2) + 1;
@@ -200,7 +195,7 @@ void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
     map[keyX][keyY] = '!';
     blankSpace[keyX][keyY] = 0;
 
-    // generate player (@)
+    // Generate player (@)
     int playerX, playerY;
     do {
         playerX = rand() % (mapX - 2) + 1;
@@ -211,17 +206,14 @@ void generateMapElements(CharArray2D& map, int blankSpace[mapX][mapY]) {
     blankSpace[playerX][playerY] = 0;
 }
 
-// generate items: shop, spike, health pack etc.
-void generateItems(CharArray2D& map, int blankSpace[mapX][mapY]) {
-
+void generateItems(char map[25][100], int blankSpace[25][100]) {
     int propTotal = 500;
     int propMax = 7;
 
     for (int i = 0; i < mapX; ++i) {
         for (int j = 0; j < mapY; ++j) {
             if (blankSpace[i][j] == 1) {
-                if (rand() % propTotal <= propMax)
-                {
+                if (rand() % propTotal <= propMax) {
                     int itemIndex = rand() % 22;
                     if (itemIndex < 7)
                         map[i][j] = '$';
@@ -229,7 +221,7 @@ void generateItems(CharArray2D& map, int blankSpace[mapX][mapY]) {
                         map[i][j] = '+';
                     else if (itemIndex >= 10 && itemIndex < 13)
                         map[i][j] = '=';
-                    else 
+                    else
                         map[i][j] = '^';
                 }
             }
@@ -237,36 +229,33 @@ void generateItems(CharArray2D& map, int blankSpace[mapX][mapY]) {
     }
 }
 
-// generate a random map
-void generateRandomMap(CharArray2D& map) {
+void generateRandomMap(char map[25][100]) {
     srand(time(NULL));
 
-    //generate blank map
+    // Generate a blank map
     int moveableSpace = 0;
     int blankSpaceArr[25][100];
     bool isConnected = false;
 
-    while(!isConnected || moveableSpace < 1000)
-    {
+    while (!isConnected || moveableSpace < 1000) {
         initializeMap(map, '-');
         generateBlankSpace(map);
         cleanAndGetBlankSpace(map, blankSpaceArr, moveableSpace);
         isConnected = isBlankSpaceConnected(map);
     }
-        
-    // generate terrain
+
+    // Generate terrain
     generateWalls(map);
     generateGrass(map);
-    
-    // generate objects
+
+    // Generate objects
     generateMapElements(map, blankSpaceArr);
     generateItems(map, blankSpaceArr);
 }
 
 
-
 // int main() {
-//     CharArray2D map = {}; // in outside classes also use
+//     char map[25][100] = {}; // Initialize the char array.
 
 //     generateRandomMap(map);
 //     printMap(map);

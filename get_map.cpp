@@ -3,20 +3,39 @@
 #include <string>
 
 #include "generate_map.h"
+#include "set_map.h"
 
 using namespace std;
-using CharArray2D = char[25][100];
 
 const int mapX = 25;
 const int mapY = 100;
 
-void getMapDataAll() {
+// read all data from map.log
+void getMapDataAll(char map[25][100]) {
+    ifstream infile("map.log");
 
+    if (infile.is_open()) {
+        string file_contents((istreambuf_iterator<char>(infile)),
+            istreambuf_iterator<char>());
+
+        int row = 0;
+        int col = 0;
+        for (char c : file_contents) {
+            if (c == '\n') {
+                map[row][col] = '\0';
+                row++;
+                col = 0;
+            } else {
+                map[row][col] = c;
+                col++;
+            }
+        }
+    }
 }
 
-void getMapDataAtPoint() {
-
-}
+// char getMapDataAtPoint(int x, int y) {
+//     // return map[x][y];
+// }
 
 
 // set color and print map elements
@@ -39,8 +58,8 @@ void printMapElement(char element) {
         cout << element;
 }
 
-// print the map on console
-void printMap(const CharArray2D& map) {
+// Print the map on the console
+void printMap(char map[25][100]) {
     for (int i = 0; i < mapX; ++i) {
         for (int j = 0; j < mapY; ++j) {
             printMapElement(map[i][j]);
@@ -50,45 +69,12 @@ void printMap(const CharArray2D& map) {
 }
 
 int main() {
-    CharArray2D map = {};
+    char map[25][100] = {};
 
     generateRandomMap(map);
     printMap(map);
 
-    // input
-    ofstream outfile("map.log");
-
-    if (outfile.is_open()) {
-        for (int i = 0; i < 25; i++) {
-            for (int j = 0; j < 100; j++) {
-                outfile << map[i][j];
-            }
-            outfile << endl;
-        }
-
-        outfile.close();
-    }
-
-    // read
-    ifstream infile("map.log");
-
-    if (infile.is_open()) {
-        string file_contents((istreambuf_iterator<char>(infile)),
-            istreambuf_iterator<char>());
-
-        int row = 0;
-        int col = 0;
-        for (char c : file_contents) {
-            if (c == '\n') {
-                map[row][col] = '\0';
-                row++;
-                col = 0;
-            } else {
-                map[row][col] = c;
-                col++;
-            }
-        }
-    }
+    setMapDataAll(map);
 
     return 0;
 }
