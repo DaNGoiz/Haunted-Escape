@@ -7,7 +7,7 @@
 using namespace std;
 
 
-// set all data in map.log
+// Set all data in map.log
 void setMapDataAll(char map[25][100]) { // why not const?
     ofstream outfile("map.log");
 
@@ -23,7 +23,7 @@ void setMapDataAll(char map[25][100]) { // why not const?
     }
 }
 
-// set data at point (x, y) in map.log
+// Set data at point (x, y) in map.log
 void setMapDataAtPoint(int x, int y, char c, char map[25][100]) {
     ofstream outfile("map.log");
 
@@ -32,6 +32,7 @@ void setMapDataAtPoint(int x, int y, char c, char map[25][100]) {
             for (int j = 0; j < 100; j++) {
                 if (i == x && j == y) {
                     outfile << c;
+                    map[i][j] = c;
                 } else {
                     outfile << map[i][j];
                 }
@@ -50,7 +51,8 @@ void newMap(char map[25][100]) {
 }
 
 // Clear map in map.log
-void clearMap() {
-    char emptyMap[25][100] = {};
+void clearMap(char map[25][100]) {
+    char emptyMap[25][100] = {}; // no?
+    map = emptyMap;
     setMapDataAll(emptyMap);
 }

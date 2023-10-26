@@ -10,7 +10,7 @@ using namespace std;
 const int mapX = 25;
 const int mapY = 100;
 
-// read all data from map.log
+// Read all data from map.log
 void getMapDataAll(char map[25][100]) {
     ifstream infile("map.log");
 
@@ -33,12 +33,36 @@ void getMapDataAll(char map[25][100]) {
     }
 }
 
-// char getMapDataAtPoint(int x, int y) {
-//     // return map[x][y];
-// }
+// Read data at point (x, y) from map.log
+char getMapDataAtPoint(int x, int y) {
+    char c;
+
+    ifstream infile("map.log");
+
+    if (infile.is_open()) {
+        string file_contents((istreambuf_iterator<char>(infile)),
+            istreambuf_iterator<char>());
+
+        int row = 0;
+        int col = 0;
+        for (char c : file_contents) {
+            if (c == '\n') {
+                row++;
+                col = 0;
+            } else {
+                if (row == x && col == y) {
+                    return c;
+                }
+                col++;
+            }
+        }
+    }
+
+    return c;
+}
 
 
-// set color and print map elements
+// Set color and print map elements
 void printMapElement(char element) {
     if (element == '@')
         cout << "\x1b[43;30m" << element << "\x1b[0m";
@@ -71,10 +95,9 @@ void printMap(char map[25][100]) {
 int main() {
     char map[25][100] = {};
 
-    generateRandomMap(map);
-    printMap(map);
+    newMap(map);
 
-    setMapDataAll(map);
+    printMap(map);
 
     return 0;
 }
