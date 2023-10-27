@@ -74,55 +74,53 @@ int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
 
 // Check if the position is inside the map
-bool isValid(int x, int y) {
-    return x >= 0 && x < mapX && y >= 0 && y < mapY;
+bool isValid(int x, int y, bool visited[mapX][mapY], int blankSpace[mapX][mapY]) {
+    return (x >= 0 && x < mapX && y >= 0 && y < mapY && !visited[x][y] && blankSpace[x][y] == 1);
 }
 
 // Go through all blank spaces
-void dfs(int x, int y, char map[25][100], bool visited[25][100]) {
+void dfs(int x, int y, bool visited[mapX][mapY], int blankSpace[mapX][mapY], int& count) {
     visited[x][y] = true;
+    count++;
+
     for (int i = 0; i < 4; i++) {
         int newX = x + dx[i];
         int newY = y + dy[i];
-        if (isValid(newX, newY) && map[newX][newY] == ' ' && !visited[newX][newY]) {
-            dfs(newX, newY, map, visited);
+
+        if (isValid(newX, newY, visited, blankSpace)) {
+            dfs(newX, newY, visited, blankSpace, count);
         }
     }
 }
 
-// Check if blank spaces are connected
-bool isBlankSpaceConnected(char map[25][100]) {
-    bool visited[25][100];
+bool isBlankSpaceConnected(char map[mapX][mapY], int blankSpace[mapX][mapY]) {
+    bool visited[mapX][mapY] = {};
+    int totalBlankSpace = 0;
+    int visitedBlankSpaceCount = 0;
+
+    // Count the total number of blank spaces
     for (int i = 0; i < mapX; i++) {
         for (int j = 0; j < mapY; j++) {
-            visited[i][j] = false;
+            if (blankSpace[i][j] == 1) {
+                totalBlankSpace++;
+            }
         }
     }
 
-    // Find the first blank place to dfs
-    int startX, startY;
-    for (int i = 0; i < mapX; i++) {
+    // Find the first blank space
+    bool found = false;
+    for (int i = 0; i < mapX && !found; i++) {
         for (int j = 0; j < mapY; j++) {
-            if (map[i][j] == ' ') {
-                startX = i;
-                startY = j;
+            if (blankSpace[i][j] == 1) {
+                dfs(i, j, visited, blankSpace, visitedBlankSpaceCount);
+                found = true;
                 break;
             }
         }
     }
 
-    dfs(startX, startY, map, visited);
-
-    // Check if all blank spaces can be visited
-    for (int i = 0; i < mapX; i++) {
-        for (int j = 0; j < mapY; j++) {
-            if (map[i][j] == ' ' && !visited[i][j]) {
-                return false;
-            }
-        }
-    }
-
-    return true;
+    // Compare the visited blank space count with total blank spaces
+    return totalBlankSpace == visitedBlankSpaceCount;
 }
 
 // Turn the outside walls to char 'X'
@@ -241,7 +239,7 @@ void generateRandomMap(char map[25][100]) {
         initializeMap(map, '-');
         generateBlankSpace(map);
         cleanAndGetBlankSpace(map, blankSpaceArr, moveableSpace);
-        isConnected = isBlankSpaceConnected(map);
+        isConnected = isBlankSpaceConnected(map, blankSpaceArr);
     }
 
     // Generate terrain

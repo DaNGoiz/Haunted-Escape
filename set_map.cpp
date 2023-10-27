@@ -52,7 +52,6 @@ void newMap(char map[25][100]) {
 
 // Clear map in map.log
 void clearMap(char map[25][100]) {
-    char emptyMap[25][100] = {}; // no?
-    map = emptyMap;
-    setMapDataAll(emptyMap);
+    initializeMap(map, ' ');
+    setMapDataAll(map);
 }
