@@ -15,36 +15,43 @@ int main(){
             printStartMenu();
             if (input == "s"){
                 printGameMenu();
+                Timer(true);
                 status = "InGame";
             }
             if (input == "e"){
+                Timer(false);
                 status = "GameOver";
             }
         }
         else if (status == "InGame"){
+            Timer(true);
             status = InGamePlayerMove();
         }
         else if (status == "Pause"){
-            Timerstop();
+            Timer(false);
             if (input == "c"){
-            Timerstart();
+            Timers(true);
             status = "InGame";
             }
         }
         else if (status == "LoadLevel"){
+            Timer(false);
             char map[25][100];
             newMap(map);
             status = "InGame";
         }
         else if (status == "Shop"){
+            Timer(false);
             printShopMenu();
             status = InShopPlayerMove();
         }
         else if (status == "GameOver"){
+            Timer(false);
             printEndMenu();
             gameOn = false;
         }
         else if (status == "Victory"){
+            Timer(false);
             printVictoryMenu();
             gameOn = false;
         }
