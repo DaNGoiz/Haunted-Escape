@@ -59,6 +59,7 @@ char menu(int high,int length){
         cout<<endl;
     
     }
+    cout<<"Please widen the window until the ui layout is correct."<<endl;
     return ' ';
 }
 
