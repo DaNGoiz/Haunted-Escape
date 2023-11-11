@@ -8,6 +8,8 @@ const int mapY = 100;
 
 bool needToChange[25][100] = {}; // hardcode
 
+// update
+
 // Initialize map
 void initializeMap(char map[25][100], char c) {
     for (int i = 0; i < mapX; ++i)
