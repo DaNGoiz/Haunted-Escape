@@ -1,6 +1,6 @@
-//#include "InGamePlayerMover.h"
+//#include "InGamePlayerMove.h"
 #include <iostream>
-#include <String>
+#include <string>
 #include "get_map.h"
 #include "set_map.h"
 using namespace std;
