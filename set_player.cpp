@@ -37,12 +37,16 @@ void ChangeGold(int change){
     p.Gold=p.Gold+change;
 }
 
-void ChangeKey(){
-    p.Key=!p.Key;
+void ChangeKey(bool hasKey){
+    p.Key=hasKey;
 }
 
 void SetLevel(int level){
     Level=level;
+}
+
+void ChangeLevel() {
+    Level++;
 }
 
 void NewPlayer(){
