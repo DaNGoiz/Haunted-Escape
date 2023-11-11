@@ -33,6 +33,11 @@ int main(){
             Timers(true);
             status = "InGame";
             }
+            if (input == "r"){
+            Timer(false);
+            ResetTimer();
+            status = "Start";
+            }
         }
         else if (status == "LoadLevel"){
             Timer(false);
