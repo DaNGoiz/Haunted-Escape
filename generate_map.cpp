@@ -8,8 +8,6 @@ const int mapY = 100;
 
 bool needToChange[25][100] = {}; // hardcode
 
-// update
-
 // Initialize map
 void initializeMap(char map[25][100], char c) {
     for (int i = 0; i < mapX; ++i)
@@ -95,6 +93,7 @@ void dfs(int x, int y, bool visited[mapX][mapY], int blankSpace[mapX][mapY], int
     }
 }
 
+// Test if blank space is connected
 bool isBlankSpaceConnected(char map[mapX][mapY], int blankSpace[mapX][mapY]) {
     bool visited[mapX][mapY] = {};
     int totalBlankSpace = 0;
@@ -145,6 +144,7 @@ void generateWalls(char map[25][100]) {
     }
 }
 
+// Generate grass on the ground
 void generateGrass(char map[25][100]) {
     for (int i = 0; i < mapX; ++i) {
         for (int j = 0; j < mapY; ++j) {
@@ -162,6 +162,7 @@ void generateGrass(char map[25][100]) {
     }
 }
 
+// Generate some basic elements (door and key and player)
 void generateMapElements(char map[25][100], int blankSpace[25][100]) {
     // Generate door (#)
     int doorX, doorY;
@@ -206,6 +207,7 @@ void generateMapElements(char map[25][100], int blankSpace[25][100]) {
     blankSpace[playerX][playerY] = 0;
 }
 
+// Generate items inside the map (money, health, shop, spike)
 void generateItems(char map[25][100], int blankSpace[25][100]) {
     int propTotal = 500;
     int propMax = 7;
@@ -229,6 +231,7 @@ void generateItems(char map[25][100], int blankSpace[25][100]) {
     }
 }
 
+// Generate a random map
 void generateRandomMap(char map[25][100]) {
     srand(time(NULL));
 
