@@ -1,8 +1,11 @@
 # COMP2113-Group6
 ## 1. Team members
 Liu Xinyun (3035983665)
+
 Wang Yifu ()
+
 Xu Jingxiang ()
+
 Zhou Yuhong ()
 
 ## 2. How to play
