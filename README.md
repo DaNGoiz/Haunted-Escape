@@ -9,6 +9,24 @@ Xu Jingxiang ()
 Zhou Yuhong ()
 
 ## 2. How to play
+Press 's' to start.
+Press 'e' to end.
+Press 'p' to pause: press 'c' to continue; press 'r' to reset.
+Press 'w/a/s/d' to move around.
+#Important#
+=is shop, can buy shield.
+Xis wall, cannot cross.
+!is key, collect it to open door.
+#is door, go to next level.
++is heal, get one health.
+^is throne, deduct one health.
+$is gold, use them in shop.
+
+When you are shopping:
+Press 'p' to pause: press 'c' to continue game.
+Press 's' to purchase shield.
+Ask you some questions, keep press 'Y' to confirm; press other key to reject.
+Press 'q' to quit.
 ### DEMO
 (Video)
 ### Launching the game
