@@ -2,23 +2,31 @@
 #include <tuple>
 #include "get_map.h"
 #include "set_map.h"
-//#include "set_playerdata.h"
+#include "get_player.h"
+#include "set_player.h"
 using namespace std;
+// This program aims to design the simple logic of player move in GAME.
+// The program receives input as 'Char' and return GAME STATUS as string.
 string InGamePlayerMove(char input){
 bool p = true;
 while (p){
+    // get the player current position
     int a[2]= GetPosition();
     int x = a[0];
     int y = a[1];
+    // pause if input is 'p'
     if (input == 'p'){
         return "Pause";
     }
     else if (input == 'w'){
-        
+        // check what is in the destination
         char c = getMapDataAtPoint(x,y-1);
+            // if is WALL, cannot move.
         if (c == 'X'){
             return "InGame";
         }
+            // if is DOOR, if have key, then go into the door. Check loadlevel or Victory.
+            // if no key, cannot move.
         else if (c == '#'){
             bool p = GetKey();
             if (p){
@@ -36,6 +44,7 @@ while (p){
             else
             return "InGame";
         }
+            // if is key, go to the key and have key.
         else if (c == '!'){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
@@ -43,12 +52,15 @@ while (p){
             ChangeKey(true);
             return "InGame";
         }
+            // if is grass, go to the grass, grass vanishes.
         else if (c == '"' | c == '\'' | c == '`' | c == ' '){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y-1,'@',map);
             return "InGame";
         }
+            // if is heal, go to the heal
+            // if there is no shield and the health is not full, then health++
         else if (c == '+'){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
@@ -62,6 +74,7 @@ while (p){
             }
             return "InGame";
         }
+            // if is gold, get gold
         else if (c == '$'){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
@@ -69,6 +82,9 @@ while (p){
             ChangeGold(1);
             return "InGame";
         }
+            // if is throne, get to throne
+            // if has shield, shield-1
+            // else health -1, check if dies
         else if (c == '^'){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
@@ -88,6 +104,7 @@ while (p){
             }
             return "InGame";
         }
+            //if is shop, go to shop
         else if (c == '='){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
