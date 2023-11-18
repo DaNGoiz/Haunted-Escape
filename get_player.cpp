@@ -39,7 +39,7 @@ void GetPlayer(){
 
 
 //print the health of player
-void GetHealth(){
+int GetHealth(){
     ofstream fout("Player.log");
     if(fout.fail()){
         cout<<"Error in file opening"<<endl;
@@ -47,6 +47,7 @@ void GetHealth(){
     }
     fout<<"Health "<<p.Health<<endl;
     fout.close();
+    return p.Health;
 }
 
 //print the shield of player

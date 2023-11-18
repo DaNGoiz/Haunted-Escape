@@ -53,7 +53,7 @@ void NewPlayer(){
     p ={5,0,0,50,25,false,1};
 }
 
-int main(){
-    //commend towards the change of setting
-    return 0;
-}
+// int main(){
+//     //commend towards the change of setting
+//     return 0;
+// }

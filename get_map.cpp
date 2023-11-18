@@ -92,12 +92,12 @@ void printMap(char map[25][100]) {
     }
 }
 
-int main() {
-    char map[25][100] = {};
+// int main() {
+//     char map[25][100] = {};
 
-    newMap(map);
+//     newMap(map);
 
-    printMap(map);
+//     printMap(map);
 
-    return 0;
-}
+//     return 0;
+// }
