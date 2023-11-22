@@ -17,7 +17,6 @@ struct Player{
 };
 
 //Give the player initial data
-Player p;
 Player p ={5,0,0,50,25,false,1};
 
 //Initialize the level of game

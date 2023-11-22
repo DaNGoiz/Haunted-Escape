@@ -16,7 +16,6 @@ struct Player{
     bool Key;
     int Level;
 };
-Player p;
 Player p ={5,0,0,50,25,false,1};
 
 
