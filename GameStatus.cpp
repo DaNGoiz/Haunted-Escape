@@ -7,6 +7,7 @@
 #include "print_end_menu.h"
 #include "print_start_menu.h"
 #include "print_victory_menu.h"
+#include "UpdateInGameUI.h"
 #include "timer.h"
 using namespace std;
 // This is the only main program throughout the project.
@@ -35,6 +36,7 @@ int main(){
         }
             // In Game, we use InGamePlayerMove() to interpret the move of the user.
         else if (status == "InGame"){
+            gameUInoshop();
             Timer(true);
             status = InGamePlayerMove();
         }
@@ -61,7 +63,7 @@ int main(){
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
             Timer(false);
-            printShopMenu();
+            gameUIhaveshop();
             status = InShopPlayerMove();
         }
             // Gameover. Game stops. While loop stops.
