@@ -4,9 +4,16 @@
 #include <sstream>
 #include <string>
 #include <cstdlib>
-#include "Player.h"
 using namespace std;
-
+// Initialize the player at the begining
+struct Player {
+    int Health;
+    int Shield;
+    int Gold;
+    int x, y;
+    bool Key;
+    int Level;
+};
 // Initialize the level of game
 int Level = 1;
 
