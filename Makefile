@@ -1,64 +1,43 @@
-CC=g++
-CFLAGS=-Wall -g
-LIBS=
+# Compiler settings - Can be customized.
+CXX = g++
+CXXFLAGS = -Wall -g
+LDFLAGS =
 
-# Object files for lowercase .cpp (utility) files
-UTILS_OBJ=generate_map.o get_map.o get_player.o set_map.o set_player.o timer.o
+# Makefile settings - Can be customized.
+APPNAME = game
+EXT = .cpp
+SRCDIR = .
+OBJDIR = obj
+BINDIR = bin
 
-# Object files for uppercase .cpp (main) files and frame.cpp
-MAIN_OBJ=Frame.o GameStatus.o InGamePlayerMove.o InShopPlayerMove.o printEndMenu.o printStartMenu.o printVictoryMenu.o
+SOURCES := $(wildcard $(SRCDIR)/*$(EXT))
+INCLUDES := $(wildcard $(SRCDIR)/*.h)
+OBJECTS := $(SOURCES:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 
-# Final executable
-EXEC=game
+# Define PHONY targets
+.PHONY: all clean distclean
 
-all: $(EXEC)
+# Default target
+all: $(BINDIR)/$(APPNAME)
 
-$(EXEC): $(UTILS_OBJ) $(MAIN_OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+# Linking
+$(BINDIR)/$(APPNAME): $(OBJECTS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
-Frame.o: frame.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
+# Compilation
+$(OBJDIR)/%.o: $(SRCDIR)/%$(EXT) | $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
-GameStatus.o: GameStatus.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-InGamePlayerMove.o: InGamePlayerMove.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-InShopPlayerMove.o: InShopPlayerMove.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-printEndMenu.o: printEndMenu.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-printStartMenu.o: printStartMenu.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-printVictoryMenu.o: printVictoryMenu.cpp $(UTILS_OBJ)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-
-# Rules for utility object files
-generate_map.o: generate_map.cpp
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-get_map.o: get_map.cpp
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-get_player.o: get_player.cpp
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-set_map.o: set_map.cpp
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-set_player.o: set_player.cpp
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-timer.o: timer.cpp
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-
+# Clean up
 clean:
-	rm -f $(UTILS_OBJ) $(MAIN_OBJ) $(EXEC)
+	$(RM) $(OBJECTS)
 
-.PHONY: all clean
+distclean: clean
+	$(RM) $(BINDIR)/$(APPNAME)
+
+# Non-file targets
+.PRECIOUS: $(OBJDIR)/. $(OBJDIR)%/.
+
+# Directory creation for object files
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
