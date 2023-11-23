@@ -21,7 +21,7 @@ int main(){
         string input;
         cin >> input;
         if (status == "Start"){
-            printStartMenu();
+            printStartMenu(15,45);
             // player starts, timer starts, game starts
             if (input == "s"){
                 gameUInoshop();
@@ -73,13 +73,13 @@ int main(){
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){
             Timer(false);
-            printEndMenu();
+            printEndMenu(15,45);
             gameOn = false;
         }
             // Victory. Game stops. While loop stops.
         else if (status == "Victory"){
             Timer(false);
-            printVictoryMenu();
+            printVictoryMenu(15,45);
             gameOn = false;
         }
         else 
