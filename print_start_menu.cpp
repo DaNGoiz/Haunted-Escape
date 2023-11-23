@@ -61,7 +61,6 @@ char printStartMenu(int high,int length){
     
     }
     cout<<"Please widen the window until the ui layout is correct."<<endl;
-    return ' ';
 }
 
 
