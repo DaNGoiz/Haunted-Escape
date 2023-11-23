@@ -364,11 +364,6 @@ while (p){
 }
 }
 
-int main(){
-char input;
-cin >> input;
-InGamePlayerMove(input);
-}
 
 
 
