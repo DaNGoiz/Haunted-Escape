@@ -2,7 +2,7 @@
 
 using namespace std;
 
-char printStartMenu(int high,int length){
+void printStartMenu(int high,int length){
         int high = 15;
         int length = 45;
     for (int i = 0; i<=high; i++){
