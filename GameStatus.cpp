@@ -24,7 +24,7 @@ int main(){
             printStartMenu();
             // player starts, timer starts, game starts
             if (input == "s"){
-                printGameMenu();
+                gameUInoshop();
                 Timer(true);
                 status = "InGame";
             }
@@ -38,13 +38,15 @@ int main(){
         else if (status == "InGame"){
             gameUInoshop();
             Timer(true);
-            status = InGamePlayerMove();
+            char c;
+            cin >> c;
+            status = InGamePlayerMove(c);
         }
             // Pause: if enter "c", then continue game, else enter "r" to restart the game.
         else if (status == "Pause"){
             Timer(false);
             if (input == "c"){
-            Timers(true);
+            Timer(true);
             status = "InGame";
             }
             if (input == "r"){
@@ -64,7 +66,9 @@ int main(){
         else if (status == "Shop"){
             Timer(false);
             gameUIhaveshop();
-            status = InShopPlayerMove();
+            char c;
+            cin >> c;
+            status = InShopPlayerMove(c);
         }
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){
