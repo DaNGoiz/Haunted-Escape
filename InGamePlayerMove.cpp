@@ -2,8 +2,7 @@
 #include <tuple>
 #include "get_map.h"
 #include "set_map.h"
-#include "get_player.h"
-#include "set_player.h"
+#include "Player.h"
 using namespace std;
 // This program aims to design the simple logic of player move in GAME.
 // The program receives input as 'Char' and return GAME STATUS as string.
