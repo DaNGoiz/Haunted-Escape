@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-char printVictoryMenu(int high,int length){
+void printVictoryMenu(int high,int length){
         int high = 15;
         int length = 45;
     for (int i = 0; i<=high; i++){
@@ -57,6 +57,5 @@ char printVictoryMenu(int high,int length){
         cout<<endl;
     
     }
-    return ' ';
 }
 
