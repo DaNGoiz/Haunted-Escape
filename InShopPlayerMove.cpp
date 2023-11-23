@@ -1,7 +1,6 @@
 #include <iostream>
 #include <String>
-#include <get_player.h>
-#include <set_player.h>
+#include <Player.h>
 using namespace std;
 // This program aims to design the simple logic of player move in SHOP.
 // The program receives input as 'Char' and return GAME STATUS as string.
