@@ -10,9 +10,9 @@ string InGamePlayerMove(char input){
 bool p = true;
 while (p){
     // get the player current position
-    int a[2]= GetPosition();
-    int x = a[0];
-    int y = a[1];
+    int* position = GetPosition();
+    int x = position[0];
+    int y = position[1];
     // pause if input is 'p'
     if (input == 'p'){
         return "Pause";
