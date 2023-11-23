@@ -56,7 +56,7 @@ void printEndMenu(int high,int length){
         cout<<endl;
     
     }
-    return ' ';
+
 }
 
 
