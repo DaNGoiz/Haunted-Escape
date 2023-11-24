@@ -17,12 +17,11 @@ int GetGold();
 int* GetPosition();
 bool GetKey();
 int GetLevel();
-void ChangeHealth(int change);
-void ChangeShield(int change);
-void ChangeGold(int change);
+void ChangeHealth(Player& p, int change);
+void ChangeShield(Player& p, int change);
+void ChangeGold(Player& p, int change);
 void ChangePosition(int x, int y);
-void ChangeKey(bool hasKey);
-void ChangeLevel(int change);
-void SetLevel(int level);
-void NewPlayer();
+void ChangeKey(Player& p);
+void ChangeLevel(Player& p, int level);
+Player NewPlayer();
 #endif

@@ -8,6 +8,7 @@ using namespace std;
 // The program receives input as 'Char' and return GAME STATUS as string.
 string InGamePlayerMove(char input){
 bool p = true;
+// Player player = NewPlayer();
 while (p){
     // get the player current position
     int* position = GetPosition();

@@ -21,7 +21,7 @@ OBJECTS := $(SOURCES:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 all: $(BINDIR)/$(APPNAME)
 
 # Linking
-$(BINDIR)/$(APPNAME): $(OBJECTS)
+$(BINDIR)/$(APPNAME): $(OBJECTS) | $(BINDIR)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 # Compilation
@@ -38,6 +38,6 @@ distclean: clean
 # Non-file targets
 .PRECIOUS: $(OBJDIR)/. $(OBJDIR)%/.
 
-# Directory creation for object files
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+# Directory creation for object files and binary
+$(OBJDIR) $(BINDIR):
+	mkdir -p $@
