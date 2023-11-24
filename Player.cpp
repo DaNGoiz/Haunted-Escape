@@ -146,8 +146,8 @@ void ChangeGold(Player& p, int change) {
     SetPlayerHelper(p);
 }
 
-void ChangeKey(Player& p) {
-    p.Key = !p.Key;
+void ChangeKey(Player& p, bool hasKey) {
+    p.Key = hasKey;
     SetPlayerHelper(p);
 }
 

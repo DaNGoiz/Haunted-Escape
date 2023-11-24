@@ -8,7 +8,7 @@ using namespace std;
 // The program receives input as 'Char' and return GAME STATUS as string.
 string InGamePlayerMove(char input){
 bool p = true;
-// Player player = NewPlayer();
+Player player = NewPlayer();
 while (p){
     // get the player current position
     int* position = GetPosition();
@@ -38,7 +38,7 @@ while (p){
                     return "Victory";
                 }
                 else
-                ChangeLevel(1);
+                ChangeLevel(player,1);
                 return "LoadLevel";
                 }
             else
@@ -49,7 +49,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y-1,'@',map);
-            ChangeKey(true);
+            ChangeKey(player,true);
             return "InGame";
         }
             // if is grass, go to the grass, grass vanishes.
@@ -69,7 +69,7 @@ while (p){
             int m = GetHealth();
             if (n == 0){
                 if (m < 5){
-                    ChangeHealth(1);
+                    ChangeHealth(player,1);
                 }
             }
             return "InGame";
@@ -79,7 +79,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y-1,'@',map);
-            ChangeGold(1);
+            ChangeGold(player,1);
             return "InGame";
         }
             // if is throne, get to throne
@@ -92,7 +92,7 @@ while (p){
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
-                ChangeHealth(-1);
+                ChangeHealth(player,-1);
                 if (m < 1){
                     return "GameOver";
                 }
@@ -100,7 +100,7 @@ while (p){
                 return "InGame";
             }
             else {
-            ChangeShield(-1);
+            ChangeShield(player,-1);
             }
             return "InGame";
         }
@@ -130,7 +130,7 @@ while (p){
                     return "Victory";
                 }
                 else
-                ChangeLevel(1);
+                ChangeLevel(player,1);
                 return "LoadLevel";
                 }
             else
@@ -140,7 +140,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x-1,y,'@',map);
-            ChangeKey(true);
+            ChangeKey(player,true);
             return "InGame";
         }
         else if (c == '"' | c == '\'' | c == '`' | c == ' '){
@@ -157,7 +157,7 @@ while (p){
             int m = GetHealth();
             if (n == 0){
                 if (m < 5){
-                    ChangeHealth(1);
+                    ChangeHealth(player,1);
                 }
             }
             return "InGame";
@@ -166,7 +166,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x-1,y,'@',map);
-            ChangeGold(1);
+            ChangeGold(player,1);
             return "InGame";
         }
         else if (c == '^'){
@@ -176,7 +176,7 @@ while (p){
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
-                ChangeHealth(-1);
+                ChangeHealth(player,-1);
                 if (m < 1){
                     return "GameOver";
                 }
@@ -184,7 +184,7 @@ while (p){
                 return "InGame";
             }
             else {
-            ChangeShield(-1);
+            ChangeShield(player,-1);
             }
             return "InGame";
         }
@@ -213,7 +213,7 @@ while (p){
                     return "Victory";
                 }
                 else
-                ChangeLevel(1);
+                ChangeLevel(player,1);
                 return "LoadLevel";
                 }
             else
@@ -223,7 +223,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y+1,'@',map);
-            ChangeKey(true);
+            ChangeKey(player,true);
             return "InGame";
         }
         else if (c == '"' | c == '\'' | c == '`' | c == ' '){
@@ -240,7 +240,7 @@ while (p){
             int m = GetHealth();
             if (n == 0){
                 if (m < 5){
-                    ChangeHealth(1);
+                    ChangeHealth(player,1);
                 }
             }
             return "InGame";
@@ -249,7 +249,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y+1,'@',map);
-            ChangeGold(1);
+            ChangeGold(player,1);
             return "InGame";
         }
         else if (c == '^'){
@@ -259,7 +259,7 @@ while (p){
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
-                ChangeHealth(-1);
+                ChangeHealth(player,-1);
                 if (m < 1){
                     return "GameOver";
                 }
@@ -267,7 +267,7 @@ while (p){
                 return "InGame";
             }
             else {
-            ChangeShield(-1);
+            ChangeShield(player,-1);
             }
             return "InGame";
         }
@@ -296,7 +296,7 @@ while (p){
                     return "Victory";
                 }
                 else
-                ChangeLevel(1);
+                ChangeLevel(player,1);
                 return "LoadLevel";
                 }
             else
@@ -306,7 +306,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x+1,y,'@',map);
-            ChangeKey(true);
+            ChangeKey(player,true);
             return "InGame";
         }
         else if (c == '"' | c == '\'' | c == '`' | c == ' '){
@@ -323,7 +323,7 @@ while (p){
             int m = GetHealth();
             if (n == 0){
                 if (m < 5){
-                    ChangeHealth(1);
+                    ChangeHealth(player,1);
                 }
             }
             return "InGame";
@@ -332,7 +332,7 @@ while (p){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x+1,y,'@',map);
-            ChangeGold(1);
+            ChangeGold(player,1);
             return "InGame";
         }
         else if (c == '^'){
@@ -342,7 +342,7 @@ while (p){
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
-                ChangeHealth(-1);
+                ChangeHealth(player,-1);
                 if (m < 1){
                     return "GameOver";
                 }
@@ -350,7 +350,7 @@ while (p){
                 return "InGame";
             }
             else {
-            ChangeShield(-1);
+            ChangeShield(player,-1);
             }
             return "InGame";
         }
