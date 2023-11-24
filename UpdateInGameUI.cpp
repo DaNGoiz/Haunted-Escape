@@ -50,8 +50,8 @@ void gameUIhaveshop(){
                                 for (int a = 0;a<=health;a++){
                                     cout<<"+";    
                                 }
+                        cout<<endl;
                         }
-                                cout<<endl;
                         //print sheild
                         else if (i ==4 && j>=105){
                                 int shield = GetShield();
@@ -202,8 +202,9 @@ void gameUInoshop(){
                                 for (int a = 0;a<=health;a++){
                                     cout<<"+";    
                                 }
-                        }
                                 cout<<endl;
+                        }
+                                
                         //print sheild
                         else if (i ==4 && j>=105){
                                 int shield = GetShield();
