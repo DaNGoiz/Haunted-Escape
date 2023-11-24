@@ -18,7 +18,7 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
     }
     else if (input == 'w'){
         // check what is in the destination
-        char c = getMapDataAtPoint(x,y-1);
+        char c = getMapDataAtPoint(x-1,y);
             // if is WALL, cannot move.
         if (c == 'X'){
             return "InGame";
@@ -29,8 +29,8 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             bool p = GetKey();
             if (p){
                 setMapDataAtPoint(x,y,' ', map);
-                setMapDataAtPoint(x,y-1,'@', map);
-                ChangePosition(player,0,-1);
+                setMapDataAtPoint(x-1,y,'@', map);
+                ChangePosition(player,-1,0);
                 int n = GetLevel();
                 if (n == 5){
                     return "Victory";
@@ -45,24 +45,24 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             // if is key, go to the key and have key.
         else if (c == '!'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             ChangeKey(player,true);
             return "InGame";
         }
             // if is grass, go to the grass, grass vanishes.
         else if (c == '"' || c == '\'' || c == '`' || c == ' '){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             return "InGame";
         }
             // if is heal, go to the heal
             // if there is no shield and the health is not full, then health++
         else if (c == '+'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
@@ -75,8 +75,8 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             // if is gold, get gold
         else if (c == '$'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             ChangeGold(player,1);
             return "InGame";
         }
@@ -85,8 +85,8 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             // else health -1, check if dies
         else if (c == '^'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
@@ -105,21 +105,21 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             //if is shop, go to shop
         else if (c == '='){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             return "Shop";
         }
         else{
             setMapDataAtPoint(x,y,' ',map);
-            setMapDataAtPoint(x,y-1,'@',map);
-            ChangePosition(player,0,-1);
+            setMapDataAtPoint(x-1,y,'@',map);
+            ChangePosition(player,-1,0);
             return "InGame";
         }
     }
 
     else if (input == 'a'){
         
-        char c = getMapDataAtPoint(x-1,y);
+        char c = getMapDataAtPoint(x,y-1);
         if (c == 'X'){
             return "InGame";
         }
@@ -127,8 +127,8 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             bool p = GetKey();
             if (p){
                 setMapDataAtPoint(x,y,' ', map);
-                setMapDataAtPoint(x-1,y,'@', map);
-                ChangePosition(player,-1,0);
+                setMapDataAtPoint(x,y-1,'@', map);
+                ChangePosition(player,0,-1);
                 int n = GetLevel();
                 if (n == 5){
                     return "Victory";
@@ -142,21 +142,21 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
         }
         else if (c == '!'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             ChangeKey(player,true);
             return "InGame";
         }
         else if (c == '"' || c == '\'' || c == '`' || c == ' '){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             return "InGame";
         }
         else if (c == '+'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
@@ -168,15 +168,15 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
         }
         else if (c == '$'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             ChangeGold(player,1);
             return "InGame";
         }
         else if (c == '^'){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             int n = GetShield();
             int m = GetHealth();
             if (n == 0){
@@ -194,108 +194,19 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
         }
         else if (c == '='){
             setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             return "Shop";
         }
         else{
             setMapDataAtPoint(x,y,' ',map);
-            setMapDataAtPoint(x-1,y,'@',map);
-            ChangePosition(player,-1,0);
+            setMapDataAtPoint(x,y-1,'@',map);
+            ChangePosition(player,0,-1);
             return "InGame";
         }
     }
 
     else if (input == 's'){
-        
-        char c = getMapDataAtPoint(x,y+1);
-        if (c == 'X'){
-            return "InGame";
-        }
-        else if (c == '#'){
-            bool p = GetKey();
-            if (p){
-                setMapDataAtPoint(x,y,' ', map);
-                setMapDataAtPoint(x,y+1,'@', map);
-                ChangePosition(player,0,1);
-                int n = GetLevel();
-                if (n == 5){
-                    return "Victory";
-                }
-                else
-                ChangeLevel(player,1);
-                return "LoadLevel";
-                }
-            else
-            return "InGame";
-        }
-        else if (c == '!'){
-            setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            ChangeKey(player,true);
-            return "InGame";
-        }
-        else if (c == '"' || c == '\'' || c == '`' || c == ' '){
-            setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            return "InGame";
-        }
-        else if (c == '+'){
-            setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            int n = GetShield();
-            int m = GetHealth();
-            if (n == 0){
-                if (m < 5){
-                    ChangeHealth(player,1);
-                }
-            }
-            return "InGame";
-        }
-        else if (c == '$'){
-            setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            ChangeGold(player,1);
-            return "InGame";
-        }
-        else if (c == '^'){
-            setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            int n = GetShield();
-            int m = GetHealth();
-            if (n == 0){
-                ChangeHealth(player,-1);
-                if (m < 1){
-                    return "GameOver";
-                }
-                else 
-                return "InGame";
-            }
-            else {
-            ChangeShield(player,-1);
-            }
-            return "InGame";
-        }
-        else if (c == '='){
-            setMapDataAtPoint(x,y,' ', map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            return "Shop";
-        }
-        else{
-            setMapDataAtPoint(x,y,' ',map);
-            setMapDataAtPoint(x,y+1,'@',map);
-            ChangePosition(player,0,1);
-            return "InGame";
-        }
-    }
-
-    else if (input == 'd'){
         
         char c = getMapDataAtPoint(x+1,y);
         if (c == 'X'){
@@ -380,6 +291,95 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             setMapDataAtPoint(x,y,' ',map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
+            return "InGame";
+        }
+    }
+
+    else if (input == 'd'){
+        
+        char c = getMapDataAtPoint(x,y+1);
+        if (c == 'X'){
+            return "InGame";
+        }
+        else if (c == '#'){
+            bool p = GetKey();
+            if (p){
+                setMapDataAtPoint(x,y,' ', map);
+                setMapDataAtPoint(x,y+1,'@', map);
+                ChangePosition(player,0,1);
+                int n = GetLevel();
+                if (n == 5){
+                    return "Victory";
+                }
+                else
+                ChangeLevel(player,1);
+                return "LoadLevel";
+                }
+            else
+            return "InGame";
+        }
+        else if (c == '!'){
+            setMapDataAtPoint(x,y,' ', map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
+            ChangeKey(player,true);
+            return "InGame";
+        }
+        else if (c == '"' || c == '\'' || c == '`' || c == ' '){
+            setMapDataAtPoint(x,y,' ', map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
+            return "InGame";
+        }
+        else if (c == '+'){
+            setMapDataAtPoint(x,y,' ', map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
+            int n = GetShield();
+            int m = GetHealth();
+            if (n == 0){
+                if (m < 5){
+                    ChangeHealth(player,1);
+                }
+            }
+            return "InGame";
+        }
+        else if (c == '$'){
+            setMapDataAtPoint(x,y,' ', map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
+            ChangeGold(player,1);
+            return "InGame";
+        }
+        else if (c == '^'){
+            setMapDataAtPoint(x,y,' ', map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
+            int n = GetShield();
+            int m = GetHealth();
+            if (n == 0){
+                ChangeHealth(player,-1);
+                if (m < 1){
+                    return "GameOver";
+                }
+                else 
+                return "InGame";
+            }
+            else {
+            ChangeShield(player,-1);
+            }
+            return "InGame";
+        }
+        else if (c == '='){
+            setMapDataAtPoint(x,y,' ', map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
+            return "Shop";
+        }
+        else{
+            setMapDataAtPoint(x,y,' ',map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            ChangePosition(player,0,1);
             return "InGame";
         }
     }
