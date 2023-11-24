@@ -47,7 +47,7 @@ int main(){
         }
             // In Game, we use InGamePlayerMove() to interpret the move of the user.
         else if (status == "InGame"){
-            if (input.size() > 1) continue;
+            if (input.size() != 1) continue;
             gameUInoshop();
             Timer(true);
             status = InGamePlayerMove(input[0], player);
@@ -73,7 +73,7 @@ int main(){
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
-            if (input.size() > 1) continue;
+            if (input.size() != 1) continue;
             Timer(false);
             gameUIhaveshop();
             status = InShopPlayerMove(input[0], player);

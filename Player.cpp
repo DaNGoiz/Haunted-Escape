@@ -168,8 +168,8 @@ Player NewPlayer(){
     newPlayer.Health = 5;
     newPlayer.Shield = 0;
     newPlayer.Gold = 0;
-    newPlayer.x = 50;
-    newPlayer.y = 25;
+    newPlayer.x = 10;
+    newPlayer.y = 10; // should be traced with player
     newPlayer.Key = false;
     newPlayer.Level = 1;
     return newPlayer;

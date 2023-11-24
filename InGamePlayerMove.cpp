@@ -7,13 +7,13 @@ using namespace std;
 // This program aims to design the simple logic of player move in GAME.
 // The program receives input as 'Char' and return GAME STATUS as string.
 string InGamePlayerMove(char input, Player& player){
-
     // get the player current position
     int* position = GetPosition();
     int x = position[0];
     int y = position[1];
     // pause if input is 'p'
     if (input == 'p'){
+        cout << x << y;
         return "Pause";
     }
     else if (input == 'w'){
