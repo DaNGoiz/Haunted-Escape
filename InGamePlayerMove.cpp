@@ -28,7 +28,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         else if (c == '#'){
             bool p = GetKey();
             if (p){
-                char map[25][100];
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x,y-1,'@', map);
                 ChangePosition(player,0,-1);
@@ -45,7 +44,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         }
             // if is key, go to the key and have key.
         else if (c == '!'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
@@ -54,7 +52,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         }
             // if is grass, go to the grass, grass vanishes.
         else if (c == '"' || c == '\'' || c == '`' || c == ' '){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
@@ -63,7 +60,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             // if is heal, go to the heal
             // if there is no shield and the health is not full, then health++
         else if (c == '+'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
@@ -78,7 +74,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         }
             // if is gold, get gold
         else if (c == '$'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
@@ -89,7 +84,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             // if has shield, shield-1
             // else health -1, check if dies
         else if (c == '^'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
@@ -110,14 +104,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
         }
             //if is shop, go to shop
         else if (c == '='){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
             return "Shop";
         }
         else{
-            char map[25][100];
             setMapDataAtPoint(x,y,' ',map);
             setMapDataAtPoint(x,y-1,'@',map);
             ChangePosition(player,0,-1);
@@ -134,7 +126,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         else if (c == '#'){
             bool p = GetKey();
             if (p){
-                char map[25][100];
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x-1,y,'@', map);
                 ChangePosition(player,-1,0);
@@ -150,7 +141,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '!'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
@@ -158,14 +148,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '"' || c == '\'' || c == '`' || c == ' '){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
             return "InGame";
         }
         else if (c == '+'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
@@ -179,7 +167,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '$'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
@@ -187,7 +174,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '^'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
@@ -207,14 +193,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '='){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
             return "Shop";
         }
         else{
-            char map[25][100];
             setMapDataAtPoint(x,y,' ',map);
             setMapDataAtPoint(x-1,y,'@',map);
             ChangePosition(player,-1,0);
@@ -231,7 +215,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         else if (c == '#'){
             bool p = GetKey();
             if (p){
-                char map[25][100];
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x,y+1,'@', map);
                 ChangePosition(player,0,1);
@@ -247,7 +230,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '!'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
@@ -255,14 +237,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '"' || c == '\'' || c == '`' || c == ' '){
-            char map[25][100];
-            setMapDataAtPoint(x,y,'\0', map);
+            setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
             return "InGame";
         }
         else if (c == '+'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
@@ -276,7 +256,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '$'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
@@ -284,7 +263,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '^'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
@@ -304,14 +282,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '='){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
             return "Shop";
         }
         else{
-            char map[25][100];
             setMapDataAtPoint(x,y,' ',map);
             setMapDataAtPoint(x,y+1,'@',map);
             ChangePosition(player,0,1);
@@ -328,7 +304,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
         else if (c == '#'){
             bool p = GetKey();
             if (p){
-                char map[25][100];
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x+1,y,'@', map);
                 ChangePosition(player,1,0);
@@ -344,7 +319,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '!'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
@@ -352,14 +326,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '"' || c == '\'' || c == '`' || c == ' '){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
             return "InGame";
         }
         else if (c == '+'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
@@ -373,7 +345,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '$'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
@@ -381,7 +352,6 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '^'){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
@@ -401,14 +371,12 @@ string InGamePlayerMove(char input, Player& player, char& map){
             return "InGame";
         }
         else if (c == '='){
-            char map[25][100];
             setMapDataAtPoint(x,y,' ', map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
             return "Shop";
         }
         else{
-            char map[25][100];
             setMapDataAtPoint(x,y,' ',map);
             setMapDataAtPoint(x+1,y,'@',map);
             ChangePosition(player,1,0);
