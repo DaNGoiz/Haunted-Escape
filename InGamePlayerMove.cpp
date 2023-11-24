@@ -52,7 +52,7 @@ while (p){
             return "InGame";
         }
             // if is grass, go to the grass, grass vanishes.
-        else if (c == '"' | c == '\'' | c == '`' | c == ' '){
+        else if (c == '"' || c == '\'' || c == '`' || c == ' '){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y-1,'@',map);
@@ -142,7 +142,7 @@ while (p){
             ChangeKey(player,true);
             return "InGame";
         }
-        else if (c == '"' | c == '\'' | c == '`' | c == ' '){
+        else if (c == '"' || c == '\'' || c == '`' || c == ' '){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x-1,y,'@',map);
@@ -225,7 +225,7 @@ while (p){
             ChangeKey(player,true);
             return "InGame";
         }
-        else if (c == '"' | c == '\'' | c == '`' | c == ' '){
+        else if (c == '"' || c == '\'' || c == '`' || c == ' '){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x,y+1,'@',map);
@@ -308,7 +308,7 @@ while (p){
             ChangeKey(player,true);
             return "InGame";
         }
-        else if (c == '"' | c == '\'' | c == '`' | c == ' '){
+        else if (c == '"' || c == '\'' || c == '`' || c == ' '){
             char map[25][100];
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x+1,y,'@',map);
