@@ -9,6 +9,7 @@
 #include "print_victory_menu.h"
 #include "UpdateInGameUI.h"
 #include "timer.h"
+#include "Player.h"
 using namespace std;
 // This is the only main program throughout the project.
 // This program controls GAME STATUS. Make sure it is always one of the following: Start; InGame; Pause; LoadLevel; GameOver; Shop; Victory.
@@ -24,6 +25,8 @@ int main(){
             printStartMenu(15,45);
             // player starts, timer starts, game starts
             if (input == "s"){
+                Player player = NewPlayer();
+                SetPlayerHelper(player);
                 gameUInoshop();
                 Timer(true);
                 status = "InGame";

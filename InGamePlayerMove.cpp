@@ -6,9 +6,8 @@
 using namespace std;
 // This program aims to design the simple logic of player move in GAME.
 // The program receives input as 'Char' and return GAME STATUS as string.
-string InGamePlayerMove(char input){
+string InGamePlayerMove(char input, Player& player){
 bool p = true;
-Player player = NewPlayer();
 while (p){
     // get the player current position
     int* position = GetPosition();

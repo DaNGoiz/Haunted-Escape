@@ -10,6 +10,8 @@ struct Player {
     bool Key;
     int Level;
 };
+Player GetPlayerHelper();
+void SetPlayerHelper(Player& p);
 Player GetPlayer();
 int GetHealth();
 int GetShield();
