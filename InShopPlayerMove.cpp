@@ -4,9 +4,8 @@
 using namespace std;
 // This program aims to design the simple logic of player move in SHOP.
 // The program receives input as 'Char' and return GAME STATUS as string.
-string InShopPlayerMove(char input){
+string InShopPlayerMove(char input, Player& player){
 bool p = true;
-Player player = NewPlayer();
 while (p){
     // if input is 'p', the shop is Paused and after entering 'c' meaning continue, Game continues.
     if (input == 'p'){

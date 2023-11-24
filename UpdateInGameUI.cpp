@@ -5,10 +5,6 @@ using namespace std;
 void gameUIhaveshop(){
         int maphigh = 26;
         int maplength = 101;
-        int playerlength = 120;
-        int playerhigh = 10;
-        int shoplength = 120;
-        int shophigh = 26;
         char map[25][100];
         getMapDataAll(map);
         //print map,player status, and shop frame
@@ -31,7 +27,7 @@ void gameUIhaveshop(){
                                 cout<<"┛";
                         }
                         //print the vertical lines on the left and right sides of the frame
-                        else if (j==0 || j==maplength || j==102 || j==120){
+                        else if (j==0 || j==maplength || j==102 || (j==120 && (i < 3 || i > 6))){
                                 cout << "┃";
                         }
                         //print the horizontal lines at the top and bottom of the frame
@@ -40,44 +36,58 @@ void gameUIhaveshop(){
                         }
                         // print map
                         else if ((i >= 1 && i <= 25) && (j >= 1 && j <= 100)) {
-                                cout << map[i-1][j-1];
+                                printMapElement(map[i-1][j-1]);
                         }
                         // print player status
                         //print health
-                        else if  (i == 3 && j >= 105) {
+                        else if  (i == 3 && j == 105) {
                                 int health = GetHealth();
                                 cout<<"Health: ";
                                 for (int a = 0;a<=health;a++){
                                     cout<<"+";    
                                 }
-                        cout<<endl;
+                                for (int i = 105; i <= 120 - health - 10; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";
                         }
+                                
                         //print sheild
-                        else if (i ==4 && j>=105){
+                        else if (i ==4 && j==105){
                                 int shield = GetShield();
                                 cout<<"Shield: ";
                                 for (int b = 0;b<=shield;b++){
                                         cout<<"o";
                                 }
-                                cout<<endl;
+                                for (int i = 105; i <= 120 - shield - 10; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";
                         }
                         //print Gold number
-                        else if(i==5 && j>=105){
+                        else if(i==5 && j==105){
                                 int gold = GetGold();
                                 cout<<"Gold: ";
                                 for (int c = 0;c<=gold;c++){
                                         cout<<"$";
                                 }
-                                cout<<endl;
+                                for (int i = 105; i <= 120 - gold - 8; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";
                         }   
                         //print level     
-                        else if(i==6 && j>=105){
+                        else if(i==6 && j==105){
                                 int level = GetLevel();
-                                cout<<"Level: "<<level<<endl;                               
+                                cout<<"Level: "<<level;
+                                for (int i = 105; i <= 120 - 9; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";                              
                         }
                         //print shop
                         //print Product Name
-                       else if(i==18 && j==105){
+                        else if(i==18 && j==105){
                                 cout<<"S";                               
                         }
                         else if(i==18 && j==106){
@@ -111,56 +121,16 @@ void gameUIhaveshop(){
 
         }
         //print instruction frame
-        for (int i = 0;i<=5;i++){
-            for (int j = 0;j<=120;j++){
-                //print upper left corner of the frame
-                if (i==0 && j==0){
-                    cout<<"┏";
-                }
-                //print upper right corner of the frame
-                else if((i==0 && j==120)){
-                    cout<<"┓";
-                }
-                //print bottom left corner of the frame
-                else if((i==5 && j==0)){
-                    cout<<"┗";
-                }
-                //print bottom right corner of the frame
-                else if((i==5 && j==120)){
-                    cout<<"┛";
-                }
-                //print upper line
-                else if(i==0){
-                        cout<<"━";
-                }
-                //print instruction
-                else if(i==2 && j==1){
-                        cout<<"Press 's' to start. Press 'e' to end. Press 'p' to pause: press 'c' to continue; press 'r' to reset. Press 'w/a/s/d' to  ";
-                }
-                else if(i==3 && j==1){
-                        cout<<"move around. ^is throne, deduct one health. $is gold, use them in shop. You can buy shield in shop to get more health.";
-                }
-                //print botton line
-                else if(i==5){
-                    cout<<"━";
-                }
-                else{
-                    cout<<" ";
-                }
-            }
-            cout<<endl;
-
-
-        }
+        cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
+        cout << "┃         Press 's' to start. Press 'e' to end. Press 'p' to pause. Press 'c' to continue. Press 'r' to reset.          ┃" << endl;
+        cout << "┃         Press 'w/a/s/d' to move around. ^is throne, deduct one health. $is gold, use them in shop.                    ┃" << endl;
+        cout << "┃         You can buy shield in shop to get more health.                                                                ┃" << endl;
+        cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 }
 
 void gameUInoshop(){
         int maphigh = 26;
         int maplength = 101;
-        int playerlength = 120;
-        int playerhigh = 10;
-        int shoplength = 120;
-        int shophigh = 26;
         char map[25][100];
         getMapDataAll(map);
         //print map,player status, and shop frame
@@ -183,7 +153,7 @@ void gameUInoshop(){
                                 cout<<"┛";
                         }
                         //print the vertical lines on the left and right sides of the frame
-                        else if (j==0 || j==maplength || j==102 || j==120){
+                        else if (j==0 || j==maplength || j==102 || (j==120 && (i < 3 || i > 6))){
                                 cout << "┃";
                         }
                         //print the horizontal lines at the top and bottom of the frame
@@ -192,41 +162,54 @@ void gameUInoshop(){
                         }
                         // print map
                         else if ((i >= 1 && i <= 25) && (j >= 1 && j <= 100)) {
-                                cout << map[i-1][j-1];
+                                printMapElement(map[i-1][j-1]);
                         }
                         // print player status
                         //print health
-                        else if  (i == 3 && j >= 105) {
+                        else if  (i == 3 && j == 105) {
                                 int health = GetHealth();
                                 cout<<"Health: ";
                                 for (int a = 0;a<=health;a++){
                                     cout<<"+";    
                                 }
-                                cout<<endl;
+                                for (int i = 105; i <= 120 - health - 10; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";
                         }
                                 
                         //print sheild
-                        else if (i ==4 && j>=105){
+                        else if (i ==4 && j==105){
                                 int shield = GetShield();
                                 cout<<"Shield: ";
                                 for (int b = 0;b<=shield;b++){
                                         cout<<"o";
                                 }
-                                cout<<endl;
+                                for (int i = 105; i <= 120 - shield - 10; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";
                         }
                         //print Gold number
-                        else if(i==5 && j>=105){
+                        else if(i==5 && j==105){
                                 int gold = GetGold();
                                 cout<<"Gold: ";
                                 for (int c = 0;c<=gold;c++){
                                         cout<<"$";
                                 }
-                                cout<<endl;
+                                for (int i = 105; i <= 120 - gold - 8; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";
                         }   
                         //print level     
-                        else if(i==6 && j>=105){
+                        else if(i==6 && j==105){
                                 int level = GetLevel();
-                                cout<<"Level: "<<level<<endl;                               
+                                cout<<"Level: "<<level;
+                                for (int i = 105; i <= 120 - 9; i++) {
+                                        cout << " ";
+                                }
+                                cout << "┃";                              
                         }
                         else{
                                 cout<<" ";
@@ -237,45 +220,9 @@ void gameUInoshop(){
 
         }
         //print instruction frame
-        for (int i = 0;i<=5;i++){
-            for (int j = 0;j<=120;j++){
-                //print upper left corner of the frame
-                if (i==0 && j==0){
-                    cout<<"┏";
-                }
-                //print upper right corner of the frame
-                else if((i==0 && j==120)){
-                    cout<<"┓";
-                }
-                //print bottom left corner of the frame
-                else if((i==5 && j==0)){
-                    cout<<"┗";
-                }
-                //print bottom right corner of the frame
-                else if((i==5 && j==120)){
-                    cout<<"┛";
-                }
-                //print upper line
-                else if(i==0){
-                        cout<<"━";
-                }
-                //print instruction
-                else if(i==2 && j==1){
-                        cout<<"Press 's' to start. Press 'e' to end. Press 'p' to pause: press 'c' to continue; press 'r' to reset. Press 'w/a/s/d' to  ";
-                }
-                else if(i==3 && j==1){
-                        cout<<"move around. ^is throne, deduct one health. $is gold, use them in shop. You can buy shield in shop to get more health.";
-                }
-                //print botton line
-                else if(i==5){
-                    cout<<"━";
-                }
-                else{
-                    cout<<" ";
-                }
-            }
-            cout<<endl;
-
-
-        }
+        cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
+        cout << "┃         Press 's' to start. Press 'e' to end. Press 'p' to pause. Press 'c' to continue. Press 'r' to reset.          ┃" << endl;
+        cout << "┃         Press 'w/a/s/d' to move around. ^is throne, deduct one health. $is gold, use them in shop.                    ┃" << endl;
+        cout << "┃         You can buy shield in shop to get more health.                                                                ┃" << endl;
+        cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 }

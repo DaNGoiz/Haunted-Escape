@@ -17,6 +17,15 @@ using namespace std;
 int main(){
     string status = "Start";
     string input;
+
+    Player player = NewPlayer();
+    SetPlayerHelper(player);
+
+    char map[25][100];
+    newMap(map);
+
+    // printStartMenu(15,45);
+
     bool gameOn = true;
     // a while loop makes sure that the game is running unless interrupted by changing gameOn = false.
     while (gameOn){
@@ -24,8 +33,7 @@ int main(){
             printStartMenu(15,45);
             // player starts, timer starts, game starts
             if (input == "s"){
-                Player player = NewPlayer();
-                SetPlayerHelper(player);
+                // player = NewPlayer();
                 gameUInoshop();
                 Timer(true);
                 status = "InGame";
@@ -33,16 +41,16 @@ int main(){
             // player chooses to end the game
             if (input == "e"){
                 Timer(false);
-                status = "GameOver";
+                cout << "Goodbye!" << endl;
+                break;
             }
         }
             // In Game, we use InGamePlayerMove() to interpret the move of the user.
         else if (status == "InGame"){
+            if (input.size() > 1) continue;
             gameUInoshop();
             Timer(true);
-            char c;
-            cin >> c;
-            status = InGamePlayerMove(c);
+            status = InGamePlayerMove(input[0], player);
         }
             // Pause: if enter "c", then continue game, else enter "r" to restart the game.
         else if (status == "Pause"){
@@ -60,7 +68,6 @@ int main(){
             // when change to new level, generate a new map.
         else if (status == "LoadLevel"){
             Timer(false);
-            char map[25][100];
             newMap(map);
             status = "InGame";
         }
@@ -70,7 +77,7 @@ int main(){
             gameUIhaveshop();
             char c;
             cin >> c;
-            status = InShopPlayerMove(c);
+            status = InShopPlayerMove(c, player);
         }
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){

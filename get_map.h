@@ -7,4 +7,7 @@ void getMapDataAll(char map[25][100]);
 // Read data at point (x, y) from map.log
 char getMapDataAtPoint(int x, int y);
 
+// Print map element with color
+void printMapElement(char element);
+
 #endif

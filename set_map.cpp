@@ -8,7 +8,7 @@ using namespace std;
 
 
 // Set all data in map.log
-void setMapDataAll(char map[25][100]) { // why not const?
+void setMapDataAll(char map[25][100]) {
     ofstream outfile("map.log");
 
     if (outfile.is_open()) {
