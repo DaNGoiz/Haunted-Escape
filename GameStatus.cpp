@@ -53,7 +53,7 @@ int main(){
             if (input.size() > 1) continue;
             gameUInoshop();
             Timer(true);
-            status = InGamePlayerMove(input[0], player, map[25][100]);
+            status = InGamePlayerMove(input[0], player, map);
         }
             // Pause: if enter "c", then continue game, else enter "r" to restart the game.
         else if (status == "Pause"){
