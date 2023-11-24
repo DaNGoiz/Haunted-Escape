@@ -1,6 +1,6 @@
 #include <iostream>
 #include "get_map.h"
-#include "get_player.h"
+#include "Player.h"
 using namespace std;
 void gameUIhaveshop(){
         int maphigh = 26;
