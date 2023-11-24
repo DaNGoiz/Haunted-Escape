@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "Player.h"
 using namespace std;
+
 // This is the only main program throughout the project.
 // This program controls GAME STATUS. Make sure it is always one of the following: Start; InGame; Pause; LoadLevel; GameOver; Shop; Victory.
 int main(){
