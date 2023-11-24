@@ -18,10 +18,9 @@ int main(){
     string status = "Start";
     string input;
     bool gameOn = true;
+    string input;
     // a while loop makes sure that the game is running unless interrupted by changing gameOn = false.
     while (gameOn){
-        string input;
-        cin >> input;
         if (status == "Start"){
             printStartMenu(15,45);
             // player starts, timer starts, game starts
@@ -87,6 +86,7 @@ int main(){
             gameOn = false;
         }
         else 
-        cout << "Invalid Input" << endl;
+            cout << "Invalid Input" << endl;
+        cin >> input;
     }
 }
