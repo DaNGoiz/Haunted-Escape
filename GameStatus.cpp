@@ -48,12 +48,8 @@ int main(){
         }
             // In Game, we use InGamePlayerMove() to interpret the move of the user.
         else if (status == "InGame"){
-<<<<<<< HEAD
-            if (input.size() != 1) continue;
-=======
             cin >> input;
             if (input.size() > 1) continue;
->>>>>>> 70970cf3f36b86190f2ee35d58193ce56756a66f
             gameUInoshop();
             Timer(true);
             status = InGamePlayerMove(input[0], player);
@@ -81,12 +77,8 @@ int main(){
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
-<<<<<<< HEAD
-            if (input.size() != 1) continue;
-=======
             cin >> input;
             if (input.size() > 1) continue;
->>>>>>> 70970cf3f36b86190f2ee35d58193ce56756a66f
             Timer(false);
             gameUIhaveshop();
             status = InShopPlayerMove(input[0], player);
