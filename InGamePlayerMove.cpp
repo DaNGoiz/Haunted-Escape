@@ -109,6 +109,12 @@ string InGamePlayerMove(char input, Player& player){
             setMapDataAtPoint(x,y-1,'@',map);
             return "Shop";
         }
+        else{
+            char map[25][100];
+            setMapDataAtPoint(x,y,'\0',map);
+            setMapDataAtPoint(x,y-1,'@',map);
+            return "InGame";
+        }
     }
 
     else if (input == 'a'){
@@ -191,6 +197,12 @@ string InGamePlayerMove(char input, Player& player){
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x-1,y,'@',map);
             return "Shop";
+        }
+        else{
+            char map[25][100];
+            setMapDataAtPoint(x,y,'\0',map);
+            setMapDataAtPoint(x-1,y,'@',map);
+            return "InGame";
         }
     }
 
@@ -275,6 +287,12 @@ string InGamePlayerMove(char input, Player& player){
             setMapDataAtPoint(x,y+1,'@',map);
             return "Shop";
         }
+        else{
+            char map[25][100];
+            setMapDataAtPoint(x,y,'\0',map);
+            setMapDataAtPoint(x,y+1,'@',map);
+            return "InGame";
+        }
     }
 
     else if (input == 'd'){
@@ -357,6 +375,12 @@ string InGamePlayerMove(char input, Player& player){
             setMapDataAtPoint(x,y,'\0', map);
             setMapDataAtPoint(x+1,y,'@',map);
             return "Shop";
+        }
+        else{
+            char map[25][100];
+            setMapDataAtPoint(x,y,'\0',map);
+            setMapDataAtPoint(x+1,y,'@',map);
+            return "InGame";
         }
     }
 }
