@@ -27,25 +27,25 @@ while (p){
                 cin >> d;
                 if (d == 'Y'){
                     // check whether gold is enough.
-                    if (gold < 3){
+                    if (gold < 2){
                         cout << "Your have not enough GOLD!" << endl;
                         return "Shop";
                     }
                     else if (shield == 1){
                         ChangeShield(2);
-                        ChangeGold(-3);
+                        ChangeGold(-2);
                         cout << "You have bought a new SHIELD!" << endl;
                         return "Shop";
                     }
                     else if (shield == 2){
                         ChangeShield(1);
-                        ChangeGold(-3);
+                        ChangeGold(-2);
                         cout << "You have bought a new SHIELD!" << endl;
                         return "Shop";
                     }
                     else if (shield == 3){
                         ChangeShield(0);
-                        ChangeGold(-3);
+                        ChangeGold(-2);
                         cout << "You have bought a new SHIELD!" << endl;
                         return "Shop";
                     }
@@ -61,14 +61,14 @@ while (p){
                 cin >> e;
                 if (e == 'Y'){
                     // check whether gold is enough.
-                    if (gold < 3){
+                    if (gold < 2){
                         cout << "Your have not enough GOLD!" << endl;
                         return "Shop";
                     }
                     else {
                         cout << "You have bought a SHIELD!" << endl;
                         ChangeShield(3);
-                        ChangeGold(-3);
+                        ChangeGold(-2);
                         return "Shop";
                     }
                 }
