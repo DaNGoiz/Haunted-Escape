@@ -85,5 +85,9 @@ while (p){
         cout << "Back to GAME" << endl;
         return "InGame";
     }
+    else{
+        cout << "Invalid Input" << endl;
+        return "Shop";
+    }
 }
 }

@@ -52,9 +52,9 @@ int main(){
         else if (status == "InGame"){
             cin >> input;
             if (input.size() > 1) continue;
-            gameUInoshop();
             Timer(true);
             status = InGamePlayerMove(input[0], player, map);
+            gameUInoshop();
         }
             // Pause: if enter "c", then continue game, else enter "r" to restart the game.
         else if (status == "Pause"){
