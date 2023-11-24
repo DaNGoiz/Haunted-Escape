@@ -13,7 +13,7 @@ string InGamePlayerMove(char input, Player& player){
     int y = position[1];
     // pause if input is 'p'
     if (input == 'p'){
-        cout << x << y;
+        // cout << x << "," << y;
         return "Pause";
     }
     else if (input == 'w'){
