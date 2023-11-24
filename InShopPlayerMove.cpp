@@ -6,6 +6,7 @@ using namespace std;
 // The program receives input as 'Char' and return GAME STATUS as string.
 string InShopPlayerMove(char input){
 bool p = true;
+Player player = NewPlayer();
 while (p){
     // if input is 'p', the shop is Paused and after entering 'c' meaning continue, Game continues.
     if (input == 'p'){
@@ -32,20 +33,20 @@ while (p){
                         return "Shop";
                     }
                     else if (shield == 1){
-                        ChangeShield(2);
-                        ChangeGold(-2);
+                        ChangeShield(player,2);
+                        ChangeGold(player,-2);
                         cout << "You have bought a new SHIELD!" << endl;
                         return "Shop";
                     }
                     else if (shield == 2){
-                        ChangeShield(1);
-                        ChangeGold(-2);
+                        ChangeShield(player,1);
+                        ChangeGold(player,-2);
                         cout << "You have bought a new SHIELD!" << endl;
                         return "Shop";
                     }
                     else if (shield == 3){
-                        ChangeShield(0);
-                        ChangeGold(-2);
+                        ChangeShield(player,0);
+                        ChangeGold(player,-2);
                         cout << "You have bought a new SHIELD!" << endl;
                         return "Shop";
                     }
@@ -67,8 +68,8 @@ while (p){
                     }
                     else {
                         cout << "You have bought a SHIELD!" << endl;
-                        ChangeShield(3);
-                        ChangeGold(-2);
+                        ChangeShield(player,3);
+                        ChangeGold(player,-2);
                         return "Shop";
                     }
                 }
