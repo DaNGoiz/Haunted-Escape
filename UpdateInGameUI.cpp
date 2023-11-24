@@ -43,7 +43,7 @@ void gameUIhaveshop(){
                         else if  (i == 3 && j == 105) {
                                 int health = GetHealth();
                                 cout<<"Health: ";
-                                for (int a = 0;a<=health;a++){
+                                for (int a = 1;a<=health;a++){
                                     cout<<"+";    
                                 }
                                 for (int i = 105; i <= 120 - health - 10; i++) {
@@ -56,7 +56,7 @@ void gameUIhaveshop(){
                         else if (i ==4 && j==105){
                                 int shield = GetShield();
                                 cout<<"Shield: ";
-                                for (int b = 0;b<=shield;b++){
+                                for (int b = 1;b<=shield;b++){
                                         cout<<"o";
                                 }
                                 for (int i = 105; i <= 120 - shield - 10; i++) {
@@ -68,7 +68,7 @@ void gameUIhaveshop(){
                         else if(i==5 && j==105){
                                 int gold = GetGold();
                                 cout<<"Gold: ";
-                                for (int c = 0;c<=gold;c++){
+                                for (int c = 1;c<=gold;c++){
                                         cout<<"$";
                                 }
                                 for (int i = 105; i <= 120 - gold - 8; i++) {
