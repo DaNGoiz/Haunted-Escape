@@ -18,7 +18,6 @@ int main(){
     string status = "Start";
     string input;
     bool gameOn = true;
-    string input;
     // a while loop makes sure that the game is running unless interrupted by changing gameOn = false.
     while (gameOn){
         if (status == "Start"){
