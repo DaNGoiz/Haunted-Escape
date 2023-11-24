@@ -73,11 +73,10 @@ int main(){
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
+            if (input.size() > 1) continue;
             Timer(false);
             gameUIhaveshop();
-            char c;
-            cin >> c;
-            status = InShopPlayerMove(c, player);
+            status = InShopPlayerMove(input[0], player);
         }
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){
@@ -93,6 +92,7 @@ int main(){
         }
         else 
             cout << "Invalid Input" << endl;
+        cout << status << endl; // debug
         cin >> input;
     }
 }
