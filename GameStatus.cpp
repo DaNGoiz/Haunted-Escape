@@ -98,7 +98,6 @@ int main(){
         }
         else 
             cout << "Invalid Input" << endl;
-            break;
         cout << status << endl; // debug
     }
 }
