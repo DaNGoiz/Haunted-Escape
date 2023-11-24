@@ -17,7 +17,8 @@ using namespace std;
 int main(){
     string status = "LoadStart";
     string input;
-
+    char map[25][100];
+    newMap(map);
     Player player = NewPlayer();
     SetPlayerHelper(player);
 
