@@ -61,6 +61,31 @@ char getMapDataAtPoint(int x, int y) {
     return c;
 }
 
+// Get position of player
+void getPlayerPosition(int& x, int& y) {
+    ifstream infile("map.log");
+
+    if (infile.is_open()) {
+        string file_contents((istreambuf_iterator<char>(infile)),
+            istreambuf_iterator<char>());
+
+        int row = 0;
+        int col = 0;
+        for (char c : file_contents) {
+            if (c == '\n') {
+                row++;
+                col = 0;
+            } else {
+                if (c == '@') {
+                    x = row;
+                    y = col;
+                }
+                col++;
+            }
+        }
+    }
+
+}
 
 // Set color and print map elements
 void printMapElement(char element) {

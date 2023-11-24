@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <cstdlib>
+#include "get_map.h"
 using namespace std;
 // Initialize the player at the begining
 struct Player {
@@ -168,8 +169,7 @@ Player NewPlayer(){
     newPlayer.Health = 5;
     newPlayer.Shield = 0;
     newPlayer.Gold = 0;
-    newPlayer.x = 10;
-    newPlayer.y = 10; // should be traced with player
+    getPlayerPosition(newPlayer.x, newPlayer.y);
     newPlayer.Key = false;
     newPlayer.Level = 1;
     return newPlayer;

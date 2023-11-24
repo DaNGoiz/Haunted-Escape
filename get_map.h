@@ -10,4 +10,7 @@ char getMapDataAtPoint(int x, int y);
 // Print map element with color
 void printMapElement(char element);
 
+// Get position of player
+void getPlayerPosition(int& x, int& y);
+
 #endif
