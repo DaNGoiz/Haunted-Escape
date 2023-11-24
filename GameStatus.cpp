@@ -52,9 +52,9 @@ int main(){
         else if (status == "InGame"){
             cin >> input;
             if (input.size() > 1) continue;
-            gameUInoshop();
             Timer(true);
             status = InGamePlayerMove(input[0], player, map);
+            gameUInoshop();
         }
             // Pause: if enter "c", then continue game, else enter "r" to restart the game.
         else if (status == "Pause"){
@@ -82,8 +82,8 @@ int main(){
             cin >> input;
             if (input.size() > 1) continue;
             Timer(false);
-            gameUIhaveshop();
             status = InShopPlayerMove(input[0], player);
+            gameUIhaveshop();        
         }
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){
