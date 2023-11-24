@@ -19,8 +19,11 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
     else if (input == 'w'){
         // check what is in the destination
         char c = getMapDataAtPoint(x-1,y);
+        if (x == 0){
+            return "InGame";
+        }
             // if is WALL, cannot move.
-        if (c == 'X'){
+        else if (c == 'X'){
             return "InGame";
         }
             // if is DOOR, if have key, then go into the door. Check loadlevel or Victory.
@@ -120,7 +123,10 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
     else if (input == 'a'){
         
         char c = getMapDataAtPoint(x,y-1);
-        if (c == 'X'){
+        if (y == 0){
+            return "InGame";
+        }
+        else if (c == 'X'){
             return "InGame";
         }
         else if (c == '#'){
@@ -209,7 +215,10 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
     else if (input == 's'){
         
         char c = getMapDataAtPoint(x+1,y);
-        if (c == 'X'){
+        if (x == 24){
+            return "InGame";
+        }
+        else if (c == 'X'){
             return "InGame";
         }
         else if (c == '#'){
@@ -298,7 +307,10 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
     else if (input == 'd'){
         
         char c = getMapDataAtPoint(x,y+1);
-        if (c == 'X'){
+        if (y == 99){
+            return "InGame";
+        }
+        else if (c == 'X'){
             return "InGame";
         }
         else if (c == '#'){
