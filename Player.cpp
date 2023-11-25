@@ -56,7 +56,8 @@ Player GetPlayerHelper() {
                     }
                 }
             } else if (id == 5) {
-                if (part == "true") {
+                cout << part << "is part"<< endl;
+                if (part == "1") {
                     p.Key = true;
                 } else {
                     p.Key = false;

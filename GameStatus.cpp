@@ -28,8 +28,12 @@ int main(){
     while (gameOn){
         if (status == "LoadStart"){
             ResetTimer();
-            char map[25][100];
+            //char map[25][100];
             newMap(map);
+            int* position = GetPosition();
+            int x = position[0];
+            int y = position[1];
+            ChangePosition(player,x,y);
             printStartMenu(15,45);
             status = "Start";
         }
