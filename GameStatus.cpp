@@ -97,8 +97,10 @@ int main(){
             printVictoryMenu(15,45);
             gameOn = false;
         }
-        else 
+        else {
             cout << "Invalid Input" << endl;
+            status = "InGame";
+            continue;}
         cout << status << endl; // debug
     }
 }
