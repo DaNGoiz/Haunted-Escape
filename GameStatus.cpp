@@ -65,6 +65,7 @@ int main(){
             status = "InGame";
             }
             if (input == "r"){
+            clearMap(map);
             Timer(false);
             ResetTimer();
             status = "LoadStart";
@@ -72,6 +73,7 @@ int main(){
         }
             // when change to new level, generate a new map.
         else if (status == "LoadLevel"){
+            clearMap(map);
             Timer(false);
             char map[25][100];
             newMap(map);
