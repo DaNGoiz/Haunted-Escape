@@ -14,7 +14,7 @@ using namespace std;
 
 
 // This is the only main program throughout the project.
-// This program controls GAME STATUS. Make sure it is always one of the following: Start; InGame; Pause; LoadLevel; GameOver; Shop; Victory.
+// This program controls GAME STATUS. Make sure it is always one of the following: LoadStart; Start; InGame; Pause; LoadLevel; GameOver; Shop; Victory.
 int main(){
     string status = "LoadStart";
     string input;
@@ -30,10 +30,6 @@ int main(){
             ResetTimer();
             //char map[25][100];
             newMap(map);
-            int* position = GetPosition();
-            int x = position[0];
-            int y = position[1];
-            ChangePosition(player,x,y);
             printStartMenu(15,45);
             status = "Start";
         }
@@ -85,9 +81,10 @@ int main(){
         else if (status == "Shop"){
             cin >> input;
             if (input.size() > 1) continue;
+            gameUIhaveshop();
             Timer(false);
             status = InShopPlayerMove(input[0], player);
-            gameUIhaveshop();        
+                 
         }
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){

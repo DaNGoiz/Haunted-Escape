@@ -29,8 +29,7 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             // if is DOOR, if have key, then go into the door. Check loadlevel or Victory.
             // if no key, cannot move.
         else if (c == '#'){
-            cout << GetKey()<< "is GetKey"<<endl;
-            if (GetKey() == 1){
+            if (player.Key == 1){
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x-1,y,'@', map);
                 ChangePosition(player,-1,0);
@@ -130,9 +129,7 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             return "InGame";
         }
         else if (c == '#'){
-
-            cout << GetKey()<< "is GetKey"<<endl;
-            if (GetKey() == 1){
+            if (player.Key == 1){
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x,y-1,'@', map);
                 ChangePosition(player,0,-1);
@@ -223,9 +220,7 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             return "InGame";
         }
         else if (c == '#'){
-
-            cout << GetKey()<< "is GetKey"<<endl;
-            if (GetKey() == 1){
+            if (player.Key == 1){
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x+1,y,'@', map);
                 ChangePosition(player,1,0);
@@ -316,9 +311,7 @@ string InGamePlayerMove(char input, Player& player, char map[25][100]){
             return "InGame";
         }
         else if (c == '#'){
-
-            cout << GetKey()<< "is GetKey"<<endl;
-            if (GetKey() == 1){
+            if (player.Key == 1){
                 setMapDataAtPoint(x,y,' ', map);
                 setMapDataAtPoint(x,y+1,'@', map);
                 ChangePosition(player,0,1);

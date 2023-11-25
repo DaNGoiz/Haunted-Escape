@@ -56,7 +56,6 @@ Player GetPlayerHelper() {
                     }
                 }
             } else if (id == 5) {
-                cout << part << "is part"<< endl;
                 if (part == "1") {
                     p.Key = true;
                 } else {
@@ -83,6 +82,7 @@ void SetPlayerHelper(Player& p) {
     ofs << "Gold: " << p.Gold << endl;
     ofs << "Position: " << p.x << "," << p.y << endl;
     ofs << "Key: " << p.Key << endl;
+    cout << p.Key << " is p.Key" << endl;
     ofs << "Level: " << p.Level << endl;
     ofs.close();
 }
