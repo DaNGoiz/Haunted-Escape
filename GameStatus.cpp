@@ -82,8 +82,8 @@ int main(){
             cin >> input;
             if (input.size() > 1) continue;
             Timer(false);
-            gameUIhaveshop();
             status = InShopPlayerMove(input[0], player);
+            gameUIhaveshop();        
         }
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){

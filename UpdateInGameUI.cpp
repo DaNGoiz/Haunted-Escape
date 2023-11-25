@@ -76,6 +76,7 @@ void gameUIhaveshop(){
                                 }
                                 cout << "┃";
                         }   
+                        //this is a test
                         //print level     
                         else if(i==6 && j==105){
                                 int level = GetLevel();
