@@ -82,7 +82,6 @@ void SetPlayerHelper(Player& p) {
     ofs << "Gold: " << p.Gold << endl;
     ofs << "Position: " << p.x << "," << p.y << endl;
     ofs << "Key: " << p.Key << endl;
-    cout << p.Key << " is p.Key" << endl;
     ofs << "Level: " << p.Level << endl;
     ofs.close();
 }
