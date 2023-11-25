@@ -163,6 +163,12 @@ void ChangePosition(Player& p, int changeX, int changeY) {
     SetPlayerHelper(p);
 }
 
+void SetPosition(Player& p, int x, int y) {
+    p.x = x;
+    p.y = y;
+    SetPlayerHelper(p);
+}
+
 Player NewPlayer(){
     // Give the player initial data
     Player newPlayer;

@@ -52,6 +52,6 @@ void newMap(char map[25][100]) {
 
 // Clear map in map.log
 void clearMap(char map[25][100]) {
-    initializeMap(map, ' ');
+    initializeMap(map, '\0');
     setMapDataAll(map);
 }

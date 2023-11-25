@@ -46,7 +46,7 @@ void gameUIhaveshop(){
                                 for (int a = 1;a<=health;a++){
                                     cout<<"+";    
                                 }
-                                for (int i = 105; i <= 120 - health - 10; i++) {
+                                for (int i = 105; i <= 120 - health - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -59,7 +59,7 @@ void gameUIhaveshop(){
                                 for (int b = 1;b<=shield;b++){
                                         cout<<"o";
                                 }
-                                for (int i = 105; i <= 120 - shield - 10; i++) {
+                                for (int i = 105; i <= 120 - shield - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -71,7 +71,7 @@ void gameUIhaveshop(){
                                 for (int c = 1;c<=gold;c++){
                                         cout<<"$";
                                 }
-                                for (int i = 105; i <= 120 - gold - 8; i++) {
+                                for (int i = 105; i <= 120 - gold - 7; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -173,7 +173,7 @@ void gameUInoshop(){
                                 for (int a = 0;a<=health-1;a++){
                                     cout<<"+";    
                                 }
-                                for (int i = 105; i <= 120 - health - 10; i++) {
+                                for (int i = 105; i <= 120 - health - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -186,7 +186,7 @@ void gameUInoshop(){
                                 for (int b = 0;b<=shield-1;b++){
                                         cout<<"o";
                                 }
-                                for (int i = 105; i <= 120 - shield - 10; i++) {
+                                for (int i = 105; i <= 120 - shield - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -198,7 +198,7 @@ void gameUInoshop(){
                                 for (int c = 0;c<=gold-1;c++){
                                         cout<<"$";
                                 }
-                                for (int i = 105; i <= 120 - gold - 8; i++) {
+                                for (int i = 105; i <= 120 - gold - 7; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";

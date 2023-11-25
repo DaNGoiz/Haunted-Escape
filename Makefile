@@ -31,6 +31,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT) | $(OBJDIR)
 # Clean up
 clean:
 	$(RM) $(OBJECTS)
+	$(RM) $(BINDIR)/$(APPNAME)
+	$(RM) *.log
 
 distclean: clean
 	$(RM) $(BINDIR)/$(APPNAME)
