@@ -42,7 +42,7 @@ Enjoy the thrill and challenge of Haunted Escape, where every move is a step clo
 Generation of random game sets or events
 
 Data structures for storing game status
-
+<img width="416" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/122252536/9418544b-b62b-492d-b35e-d8cf56c78109">
 Dynamic memory management
 - We dynamically manage the memory for the information data of the player (see void ChangeXXX in Player.cpp)
 
