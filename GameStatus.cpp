@@ -30,6 +30,9 @@ int main(){
             ResetTimer();
             //char map[25][100];
             newMap(map);
+            int x, y;
+            getPlayerPosition(x, y);
+            SetPosition(player, x, y);
             printStartMenu(15,45);
             status = "Start";
         }
