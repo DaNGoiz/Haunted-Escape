@@ -5,7 +5,6 @@
 #include "get_map.h"
 #include "set_map.h"
 #include "print_end_menu.h"
-#include "print_start_menu.h"
 #include "print_victory_menu.h"
 #include "UpdateInGameUI.h"
 #include "timer.h"
@@ -115,13 +114,13 @@ int main(){
             // Gameover. Game stops. While loop stops.
         else if (status == "GameOver"){
             Timer(false);
-            printEndMenu(15,45);
+            printEndMenu();
             gameOn = false;
         }
             // Victory. Game stops. While loop stops.
         else if (status == "Victory"){
             Timer(false);
-            printVictoryMenu(15,45);
+            printVictoryMenu();
             gameOn = false;
         }
         else {

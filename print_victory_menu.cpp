@@ -1,8 +1,9 @@
 #include <iostream>
+#include "timer.h"
 
 using namespace std;
 
-void loadStart(){
+void printVictoryMenu(){
 cout << R"(
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃        __     __             ____   _____   U  ___ u   ____     __   __          ┃
@@ -15,9 +16,6 @@ cout << R"(
 ┃                                                                                  ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
- ┃    Press 's' to start. Press 'e' to end.   ┃
- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
     )";
-cout<<"Please widen the window until the ui layout is correct."<<endl;
+cout << GetTime()<<endl;
 }
