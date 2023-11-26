@@ -1,5 +1,5 @@
-# COMP2113-Group6
-## 1. Team members
+# Haunted Escape
+## 1. Team members of COMP2113-Group6
 Liu Xinyun (3035983665)
 
 Wang Yifu (3036098156)
