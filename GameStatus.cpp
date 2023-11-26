@@ -75,8 +75,10 @@ int main(){
         else if (status == "LoadLevel"){
             clearMap(map);
             Timer(false);
-            char map[25][100];
             newMap(map);
+            int x, y;
+            getPlayerPosition(x, y);
+            SetPosition(player, x, y);
             status = "InGame";
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.

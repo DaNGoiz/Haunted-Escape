@@ -128,6 +128,10 @@ bool isBlankSpaceConnected(char map[mapX][mapY], int blankSpace[mapX][mapY]) {
 void generateWalls(char map[25][100]) { 
     for (int i = 0; i < mapX; ++i)
         for (int j = 0; j < mapY; ++j)
+            needToChange[i][j] = false;
+            
+    for (int i = 0; i < mapX; ++i)
+        for (int j = 0; j < mapY; ++j)
             if (map[i][j] == '-')
                 if ((i - 1 >= 0 && map[i - 1][j] != '-') ||
                     (i + 1 < mapX && map[i + 1][j] != '-') ||
@@ -226,6 +230,8 @@ void generateItems(char map[25][100], int blankSpace[25][100]) {
                     else
                         map[i][j] = '^';
                 }
+                else if (rand() % 100 < 10)
+                        map[i][j] = '^';
             }
         }
     }
@@ -236,25 +242,32 @@ void generateRandomMap(char map[25][100]) {
     srand(time(NULL));
 
     // Generate a blank map
+    char localMap[25][100];
     int moveableSpace = 0;
     int blankSpaceArr[25][100];
     bool isConnected = false;
 
     while (!isConnected || moveableSpace < 1000) {
-        initializeMap(map, '-');
-        generateBlankSpace(map);
-        cleanAndGetBlankSpace(map, blankSpaceArr, moveableSpace);
-        isConnected = isBlankSpaceConnected(map, blankSpaceArr);
+        initializeMap(localMap, '-');
+        generateBlankSpace(localMap);
+        cleanAndGetBlankSpace(localMap, blankSpaceArr, moveableSpace);
+        isConnected = isBlankSpaceConnected(localMap, blankSpaceArr);
     }
 
-    // Generate terrain
-    generateWalls(map);
-    generateGrass(map);
+    // Generate terrain and objects
+    generateWalls(localMap);
+    generateGrass(localMap);
+    generateMapElements(localMap, blankSpaceArr);
+    generateItems(localMap, blankSpaceArr);
 
-    // Generate objects
-    generateMapElements(map, blankSpaceArr);
-    generateItems(map, blankSpaceArr);
+    // Copy localMap to map
+    for (int i = 0; i < 25; ++i) {
+        for (int j = 0; j < 100; ++j) {
+            map[i][j] = localMap[i][j];
+        }
+    }
 }
+
 
 
 // int main() {

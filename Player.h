@@ -23,7 +23,9 @@ void ChangeHealth(Player& p, int change);
 void ChangeShield(Player& p, int change);
 void ChangeGold(Player& p, int change);
 void ChangePosition(Player& p, int x, int y);
+void SetPosition(Player& p, int x, int y);
 void ChangeKey(Player& p, bool hasKey);
 void ChangeLevel(Player& p, int level);
+void SetLevel(Player& p, int level);
 Player NewPlayer();
 #endif

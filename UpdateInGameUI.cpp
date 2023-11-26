@@ -46,7 +46,7 @@ void gameUIhaveshop(){
                                 for (int a = 1;a<=health;a++){
                                     cout<<"+";    
                                 }
-                                for (int i = 105; i <= 120 - health - 10; i++) {
+                                for (int i = 105; i <= 120 - health - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -59,7 +59,7 @@ void gameUIhaveshop(){
                                 for (int b = 1;b<=shield;b++){
                                         cout<<"o";
                                 }
-                                for (int i = 105; i <= 120 - shield - 10; i++) {
+                                for (int i = 105; i <= 120 - shield - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -71,7 +71,7 @@ void gameUIhaveshop(){
                                 for (int c = 1;c<=gold;c++){
                                         cout<<"$";
                                 }
-                                for (int i = 105; i <= 120 - gold - 8; i++) {
+                                for (int i = 105; i <= 120 - gold - 7; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -123,9 +123,8 @@ void gameUIhaveshop(){
         }
         //print instruction frame
         cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
-        cout << "┃         Press 's' to start. Press 'e' to end. Press 'p' to pause. Press 'c' to continue. Press 'r' to reset.          ┃" << endl;
-        cout << "┃         Press 'w/a/s/d' to move around. ^is throne, deduct one health. $is gold, use them in shop.                    ┃" << endl;
-        cout << "┃         You can buy shield in shop to get more health.                                                                ┃" << endl;
+        cout << "┃         You have entered a shop! You can buy shield here to get more protection.                                      ┃" << endl;
+        cout << "┃         Press 'Y' to buy. Press 'q' to return to game. Press 'p' to pause.                                            ┃" << endl;
         cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 }
 
@@ -173,7 +172,7 @@ void gameUInoshop(){
                                 for (int a = 0;a<=health-1;a++){
                                     cout<<"+";    
                                 }
-                                for (int i = 105; i <= 120 - health - 10; i++) {
+                                for (int i = 105; i <= 120 - health - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -186,7 +185,7 @@ void gameUInoshop(){
                                 for (int b = 0;b<=shield-1;b++){
                                         cout<<"o";
                                 }
-                                for (int i = 105; i <= 120 - shield - 10; i++) {
+                                for (int i = 105; i <= 120 - shield - 9; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -198,7 +197,7 @@ void gameUInoshop(){
                                 for (int c = 0;c<=gold-1;c++){
                                         cout<<"$";
                                 }
-                                for (int i = 105; i <= 120 - gold - 8; i++) {
+                                for (int i = 105; i <= 120 - gold - 7; i++) {
                                         cout << " ";
                                 }
                                 cout << "┃";
@@ -222,8 +221,7 @@ void gameUInoshop(){
         }
         //print instruction frame
         cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
-        cout << "┃         Press 's' to start. Press 'e' to end. Press 'p' to pause. Press 'c' to continue. Press 'r' to reset.          ┃" << endl;
-        cout << "┃         Press 'w/a/s/d' to move around. ^is throne, deduct one health. $is gold, use them in shop.                    ┃" << endl;
-        cout << "┃         You can buy shield in shop to get more health.                                                                ┃" << endl;
+        cout << "┃         Press 'w/a/s/d' to move around. "<< "\x1b[31m" << "^" << "\x1b[0m" << " is throne, deduct one health. " << "\x1b[33m" << "$" << "\x1b[0m" << " is gold, use them in shop " << "\x1b[33m" << "=" << "\x1b[0m" << ".                ┃" << endl;
+        cout << "┃         Your goal is to pick the key " << "\x1b[46;30m" << "!" << "\x1b[0m" << ", then use it to open the gate " << "\x1b[46;30m" << "#" << "\x1b[0m" << ".                                               ┃" << endl;
         cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 }

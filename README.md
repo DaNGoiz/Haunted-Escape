@@ -1,5 +1,5 @@
-# COMP2113-Group6
-## 1. Team members
+# Haunted Escape
+## 1. Team members of COMP2113-Group6
 Liu Xinyun (3035983665)
 
 Wang Yifu (3036098156)
@@ -16,41 +16,12 @@ Zhou Yuhong ()
 make
 ```
 ```bash
-./game
+./bin/game
 ```
 ### Player movement
 Press 's' to start.
 
-Press 'e' to end.
-
-Press 'p' to pause: press 'c' to continue; press 'r' to reset.
-
 Press 'w/a/s/d' to move around.
-
-#Important
-!is key, collect it to open door.
-
-#is door, go to next level.
-
-=is shop, can buy shield.
-
-Xis wall, cannot cross.
-
-+is heal, get one health.
-
-^is throne, deduct one health.
-
-$is gold, use them in shop.
-
-When you are shopping:
-
-Press 'p' to pause: press 'c' to continue game.
-
-Press 's' to purchase shield.
-
-Ask you some questions, keep press 'Y' to confirm; press other key to reject.
-
-Press 'q' to quit.
 
 ## Description
 🌟 Welcome to our thrilling text-based Haunted Escape RPG game, crafted in C++! This game offers a spine-chilling adventure where you, the player, are trapped in a haunted realm. Your mission: escape the eerie confines by navigating through randomly generated rooms, unlocking doors, and avoiding lethal traps.
