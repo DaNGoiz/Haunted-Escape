@@ -6,7 +6,7 @@ Wang Yifu (3036098156)
 
 Xu Jingxiang (3036051550)
 
-Zhou Yuhong ()
+Zhou Yuhong (3036037554)
 
 ## 2. How to play
 ### DEMO
@@ -44,6 +44,7 @@ Generation of random game sets or events
 Data structures for storing game status
 
 Dynamic memory management
+- We dynamically manage the memory for the information data of the player (see void ChangeXXX in Player.cpp)
 
 File input/output
 
