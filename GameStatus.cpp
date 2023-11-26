@@ -10,6 +10,7 @@
 #include "UpdateInGameUI.h"
 #include "timer.h"
 #include "Player.h"
+#include "print_title_menu.h"
 using namespace std;
 
 
@@ -17,6 +18,7 @@ using namespace std;
 // This program controls GAME STATUS. Make sure it is always one of the following: LoadStart; Start; InGame; Pause; LoadLevel; GameOver; Shop; Victory.
 int main(){
     string status = "LoadStart";
+    printTitleMenu();
     string input;
     char map[25][100];
     newMap(map);
