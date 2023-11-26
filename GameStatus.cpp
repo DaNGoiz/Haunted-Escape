@@ -13,6 +13,8 @@
 #include "print_title_menu.h"
 #include "loadlevel1.h"
 #include "loadlevel2.h"
+#include "loadlevel3.h"
+#include "loadlevel4.h"
 using namespace std;
 
 
@@ -93,7 +95,13 @@ int main(){
             else if (player.Level == 3){
                 loadLevel2();
                 }
-        }
+            else if (player.Level == 4){
+                loadLevel3();
+                }   
+            else if (player.Level == 5){
+                loadLevel4();
+                }
+            }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
             cin >> input;

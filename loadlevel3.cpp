@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void loadLevel2(){
+void loadLevel3(){
 cout << R"(
          .m.                                   ,_
          ' ;M;                                ,;m `
