@@ -21,7 +21,6 @@ using namespace std;
 int main(){
     string status = "LoadStart";
     printTitleMenu();
-    loadLevel2();
     string input;
     char map[25][100];
     newMap(map);
@@ -93,7 +92,7 @@ int main(){
                 }
             else if (player.Level == 3){
                 loadLevel2();
-            }
+                }
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
