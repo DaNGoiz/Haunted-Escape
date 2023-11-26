@@ -1,9 +1,9 @@
-# Compiler settings - Can be customized.
+# Compiler settings
 CXX = g++
 CXXFLAGS = -Wall -g
 LDFLAGS =
 
-# Makefile settings - Can be customized.
+# Makefile settings
 APPNAME = game
 EXT = .cpp
 SRCDIR = .
