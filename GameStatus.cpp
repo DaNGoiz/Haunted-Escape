@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "Player.h"
 #include "print_title_menu.h"
+#include "loadlevel1.h"
 using namespace std;
 
 
@@ -19,6 +20,7 @@ using namespace std;
 int main(){
     string status = "LoadStart";
     printTitleMenu();
+    
     string input;
     char map[25][100];
     newMap(map);
@@ -85,7 +87,9 @@ int main(){
             getPlayerPosition(x, y);
             SetPosition(player, x, y);
             status = "InGame";
-            gameUInoshop();
+            if (player.Level == 2){
+            loadLevel1();
+            }
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
