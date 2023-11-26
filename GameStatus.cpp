@@ -11,6 +11,7 @@
 #include "timer.h"
 #include "Player.h"
 #include "print_title_menu.h"
+#include "loadlevel0.h"
 #include "loadlevel1.h"
 #include "loadlevel2.h"
 #include "loadlevel3.h"
@@ -35,20 +36,18 @@ int main(){
     while (gameOn){
         if (status == "LoadStart"){
             ResetTimer();
-            //char map[25][100];
             newMap(map);
             int x, y;
             getPlayerPosition(x, y);
             SetPosition(player, x, y);
             loadStart();
-            printStartMenu(15,45);
             status = "Start";
         }
         if (status == "Start"){
             cin >> input;
             // player starts, timer starts, game starts
             if (input == "s"){
-                gameUInoshop();
+                loadLevel0();
                 Timer(true);
                 status = "InGame";
             }
@@ -129,6 +128,5 @@ int main(){
             cout << "Invalid Input" << endl;
             status = "InGame";
             continue;}
-        cout << status << endl; // debug
     }
 }
