@@ -232,6 +232,8 @@ void generateItems(char map[25][100], int blankSpace[25][100]) {
                 }
                 else if (rand() % 100 < 10)
                         map[i][j] = '^';
+                else if (rand() % 100 < 2)
+                        map[i][j] = '+';
             }
         }
     }
