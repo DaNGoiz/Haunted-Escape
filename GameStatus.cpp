@@ -80,6 +80,7 @@ int main(){
             getPlayerPosition(x, y);
             SetPosition(player, x, y);
             status = "InGame";
+            gameUInoshop();
         }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
