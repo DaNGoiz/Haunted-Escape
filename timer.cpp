@@ -7,26 +7,34 @@ using namespace std::chrono;
 
 class SimpleTimer {
 public:
+    SimpleTimer() : m_bRunning(false), m_ElapsedTime(milliseconds::zero()) {}
+
     void start() {
-        m_StartTime = steady_clock::now();
-        m_bRunning = true;
+        if (!m_bRunning) {
+            m_StartTime = steady_clock::now() - m_ElapsedTime;
+            m_bRunning = true;
+        }
     }
 
     void stop() {
-        m_EndTime = steady_clock::now();
+        if (m_bRunning) {
+            m_EndTime = steady_clock::now();
+            m_ElapsedTime = m_EndTime - m_StartTime;
+            m_bRunning = false;
+        }
+    }
+
+    void reset() {
         m_bRunning = false;
+        m_ElapsedTime = milliseconds::zero();
     }
 
     double elapsedMilliseconds() {
-        steady_clock::time_point endTime;
-
         if (m_bRunning) {
-            endTime = steady_clock::now();
+            return duration_cast<milliseconds>(steady_clock::now() - m_StartTime).count();
         } else {
-            endTime = m_EndTime;
+            return duration_cast<milliseconds>(m_ElapsedTime).count();
         }
-
-        return duration_cast<milliseconds>(endTime - m_StartTime).count();
     }
 
     string elapsedString() {
@@ -41,7 +49,7 @@ public:
         if (hours > 0) {
             timeStr += to_string(hours) + " hour ";
         }
-        if (minutes > 0 || hours > 0) { // include minutes if hours are present
+        if (minutes > 0 || hours > 0) {
             timeStr += to_string(minutes) + " min ";
         }
         timeStr += to_string(seconds) + " sec";
@@ -50,9 +58,9 @@ public:
     }
 
 private:
-    steady_clock::time_point m_StartTime;
-    steady_clock::time_point m_EndTime;
-    bool m_bRunning = false;
+    steady_clock::time_point m_StartTime, m_EndTime;
+    steady_clock::duration m_ElapsedTime;
+    bool m_bRunning;
 };
 
 SimpleTimer timer;
@@ -66,7 +74,7 @@ void Timer(bool start) {
 }
 
 void ResetTimer() {
-    timer = SimpleTimer();
+    timer.reset();
 }
 
 string GetTime() {
