@@ -15,6 +15,7 @@
 #include "loadlevel2.h"
 #include "loadlevel3.h"
 #include "loadlevel4.h"
+#include "load_start.h"
 using namespace std;
 
 
@@ -39,6 +40,7 @@ int main(){
             int x, y;
             getPlayerPosition(x, y);
             SetPosition(player, x, y);
+            loadStart();
             printStartMenu(15,45);
             status = "Start";
         }
