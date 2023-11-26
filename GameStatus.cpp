@@ -16,6 +16,8 @@
 #include "loadlevel3.h"
 #include "loadlevel4.h"
 #include "load_start.h"
+#include "shopmenu.h"
+#include "print_pause_menu.h"
 using namespace std;
 
 
@@ -67,6 +69,7 @@ int main(){
         }
             // Pause: if enter "c", then continue game, else enter "r" to restart the game.
         else if (status == "Pause"){
+            print_pause_menu();
             Timer(false);
             cin >> input;
             if (input == "c"){
@@ -104,6 +107,7 @@ int main(){
             }
             // go to shop, use InShopPlayerMove to interpret the move of the user.
         else if (status == "Shop"){
+            shopmenu();
             cin >> input;
             if (input.size() > 1) continue;
             gameUIhaveshop();
