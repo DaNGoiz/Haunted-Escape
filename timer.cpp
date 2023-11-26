@@ -7,38 +7,34 @@ using namespace std::chrono;
 
 class SimpleTimer {
 public:
-    SimpleTimer() : m_bStarted(false), m_bRunning(false) {}
+    SimpleTimer() : m_bRunning(false), m_ElapsedTime(milliseconds::zero()) {}
 
     void start() {
-        if (!m_bStarted) {
-            m_StartTime = steady_clock::now();
+        if (!m_bRunning) {
+            m_StartTime = steady_clock::now() - m_ElapsedTime;
             m_bRunning = true;
-            m_bStarted = true;
         }
     }
 
     void stop() {
         if (m_bRunning) {
             m_EndTime = steady_clock::now();
+            m_ElapsedTime = m_EndTime - m_StartTime;
             m_bRunning = false;
         }
     }
 
     void reset() {
-        m_bStarted = false;
         m_bRunning = false;
+        m_ElapsedTime = milliseconds::zero();
     }
 
     double elapsedMilliseconds() {
-        steady_clock::time_point endTime;
-
         if (m_bRunning) {
-            endTime = steady_clock::now();
+            return duration_cast<milliseconds>(steady_clock::now() - m_StartTime).count();
         } else {
-            endTime = m_EndTime;
+            return duration_cast<milliseconds>(m_ElapsedTime).count();
         }
-
-        return duration_cast<milliseconds>(endTime - m_StartTime).count();
     }
 
     string elapsedString() {
@@ -62,9 +58,8 @@ public:
     }
 
 private:
-    steady_clock::time_point m_StartTime;
-    steady_clock::time_point m_EndTime;
-    bool m_bStarted;
+    steady_clock::time_point m_StartTime, m_EndTime;
+    steady_clock::duration m_ElapsedTime;
     bool m_bRunning;
 };
 

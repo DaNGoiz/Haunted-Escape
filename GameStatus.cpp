@@ -127,6 +127,5 @@ int main(){
             cout << "Invalid Input" << endl;
             status = "InGame";
             continue;}
-        // cout << GetTime() << endl;
     }
 }
