@@ -153,16 +153,12 @@ void ChangeKey(Player& p, bool hasKey) {
 }
 
 void ChangeLevel(Player& p, int level) {
-<<<<<<< HEAD
-    p.Level = p.Level + level;
-=======
     p.Level += level;
     SetPlayerHelper(p);
 }
 
 void SetLevel(Player& p, int level) {
     p.Level = level;
->>>>>>> fcf18ca82efc474a26e864a3b2e980190c7615be
     SetPlayerHelper(p);
 }
 
