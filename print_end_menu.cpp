@@ -19,5 +19,5 @@ cout << R"(
 
     )";
 
-cout << GetTime()<<endl;
+cout <<"You have used "<< GetTime()<<endl;
 }
