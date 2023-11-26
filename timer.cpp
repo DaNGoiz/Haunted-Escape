@@ -7,13 +7,25 @@ using namespace std::chrono;
 
 class SimpleTimer {
 public:
+    SimpleTimer() : m_bStarted(false), m_bRunning(false) {}
+
     void start() {
-        m_StartTime = steady_clock::now();
-        m_bRunning = true;
+        if (!m_bStarted) {
+            m_StartTime = steady_clock::now();
+            m_bRunning = true;
+            m_bStarted = true;
+        }
     }
 
     void stop() {
-        m_EndTime = steady_clock::now();
+        if (m_bRunning) {
+            m_EndTime = steady_clock::now();
+            m_bRunning = false;
+        }
+    }
+
+    void reset() {
+        m_bStarted = false;
         m_bRunning = false;
     }
 
@@ -41,7 +53,7 @@ public:
         if (hours > 0) {
             timeStr += to_string(hours) + " hour ";
         }
-        if (minutes > 0 || hours > 0) { // include minutes if hours are present
+        if (minutes > 0 || hours > 0) {
             timeStr += to_string(minutes) + " min ";
         }
         timeStr += to_string(seconds) + " sec";
@@ -52,7 +64,8 @@ public:
 private:
     steady_clock::time_point m_StartTime;
     steady_clock::time_point m_EndTime;
-    bool m_bRunning = false;
+    bool m_bStarted;
+    bool m_bRunning;
 };
 
 SimpleTimer timer;
@@ -66,7 +79,7 @@ void Timer(bool start) {
 }
 
 void ResetTimer() {
-    timer = SimpleTimer();
+    timer.reset();
 }
 
 string GetTime() {
