@@ -18,4 +18,6 @@ cout << R"(
 
 
     )";
+
+cout <<"You have used "<< GetTime()<<endl;
 }
