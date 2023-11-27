@@ -10,7 +10,7 @@ Zhou Yuhong (3036037554)
 
 ## 2. How to play
 ### DEMO
-[(Video)](https://youtu.be/d6Mb4j-7lZU)
+[![asciicast](https://asciinema.org/a/unI1fghm9PS84T3rhHCxqJI1t.svg)](https://asciinema.org/a/unI1fghm9PS84T3rhHCxqJI1t)
 ### Launching the game
 ```bash
 make
