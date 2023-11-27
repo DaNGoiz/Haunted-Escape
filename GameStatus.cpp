@@ -71,10 +71,6 @@ int main(){
         else if (status == "Pause"){
             print_pause_menu();
             Timer(false);
-            cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
-            cout << "┃                    You are pausing the game. Press 'c' to continue or press 'r' to restart.                           ┃" << endl;
-            cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
-
             cin >> input;
             if (input == "c"){
             Timer(true);
