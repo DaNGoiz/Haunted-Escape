@@ -28,7 +28,7 @@ while (p){
                 if (d == 'Y'){
                     // check whether gold is enough.
                     if (gold < 2){
-                        cout << "Your have not enough GOLD!" << endl;
+                        cout << "You have not enough GOLD!" << endl;
                         return "Shop";
                     }
                     else if (shield == 1){
@@ -62,7 +62,7 @@ while (p){
                 if (e == 'Y'){
                     // check whether gold is enough.
                     if (gold < 2){
-                        cout << "Your have not enough GOLD!" << endl;
+                        cout << "You have not enough GOLD!" << endl;
                         return "Shop";
                     }
                     else {
