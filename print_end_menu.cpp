@@ -18,6 +18,4 @@ cout << R"(
 
 
     )";
-
-cout << GetTime()<<endl;
 }

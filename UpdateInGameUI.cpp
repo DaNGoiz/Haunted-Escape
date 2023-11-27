@@ -223,5 +223,6 @@ void gameUInoshop(){
         cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" << endl;
         cout << "┃         Press 'w/a/s/d' to move around. "<< "\x1b[31m" << "^" << "\x1b[0m" << " is throne, deduct one health. " << "\x1b[33m" << "$" << "\x1b[0m" << " is gold, use them in shop " << "\x1b[33m" << "=" << "\x1b[0m" << ".                ┃" << endl;
         cout << "┃         Your goal is to pick the key " << "\x1b[46;30m" << "!" << "\x1b[0m" << ", then use it to open the gate " << "\x1b[46;30m" << "#" << "\x1b[0m" << ".                                               ┃" << endl;
+        cout << "┃         If you want to pause the game, press 'p'.                                                                     ┃" << endl;
         cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << endl;
 }
