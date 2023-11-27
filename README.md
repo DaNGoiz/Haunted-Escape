@@ -61,5 +61,5 @@ Used standard libraries only.
 
 # 3. Class description
 1. UpdateInGameUI.cpp
-· Print the entire game frame
-· Print the map, playerstatus ,instruction and shop on the screen
+- Print the entire game frame
+- Print the map, playerstatus ,instruction and shop on the screen
