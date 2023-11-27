@@ -64,4 +64,4 @@ Used standard libraries only.
 - Print the entire game frame
 - Print the map, playerstatus ,instruction and shop on the screen
 2. print_pause_mennu.cpp
-- when player press 'p', the screen will be printed 'You have paused the game'.
+- When player press 'p', the screen will be printed 'You have paused the game'.
