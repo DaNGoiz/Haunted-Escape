@@ -135,6 +135,42 @@ Player NewPlayer(){
         isConnected = isBlankSpaceConnected(localMap, blankSpaceArr);
     }
 
+4. InGamePlayerMove.cpp/InShopPlayerMove.cpp
+- decide what player does according to the keyboard input
+- perform map/player status change accordingly
+```bash
+string InGamePlayerMove(char input, Player& player, char map[25][100]){
+    int* position = GetPosition();
+    int x = position[0];
+    int y = position[1];
+    if (input == 'w'){
+        char c = getMapDataAtPoint(x-1,y);
+        if (x == 0){
+            return "InGame";
+        }
+}
+}
+```
+
+5. GameStatus.cpp
+- Change the status of player
+- the only main program of the game
+```bash
+while (gameOn){
+        if (status == "LoadStart"){
+            ResetTimer();
+            newMap(map);
+            int x, y;
+            getPlayerPosition(x, y);
+            SetPosition(player, x, y);
+            loadStart();
+            status = "Start";
+        }
+```
+
+6.Loadlevel.cpp 
+- print the ASCII grafhs when loading levels
+```bash
     // Generate terrain and objects
     generateWalls(localMap);
     generateGrass(localMap);
