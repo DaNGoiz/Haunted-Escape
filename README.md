@@ -73,14 +73,47 @@ Used standard libraries only.
 - Get each information data of Player from Player.log
   
 The Structure of a Player is like below:
-<img width="337" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/146114365/23b304f0-3d23-4a34-9690-69592e47c9c8">
-
+```bash
+struct Player {
+    int Health;
+    int Shield;
+    int Gold;
+    int x, y;
+    bool Key;
+    int Level;
+};
+```
 The function to convert the Player's data into Player.log:
-<img width="407" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/146114365/a2dd1ac9-b6ce-40e3-9346-c90241422d57">
-
-The initial information data of a Player if you want a new one:
-<img width="367" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/146114365/28308d8a-9c27-4d82-b690-8034dfb59bdc">
-
-
+```bash
+void SetPlayerHelper(Player& p) {
+    ofstream ofs("Player.log");
+    if (ofs.fail()) {
+        cout << "Error in file opening" << endl;
+        exit(1);
+    }
+    ofs << "Health: " << p.Health << endl;
+    ofs << "Shield: " << p.Shield << endl;
+    ofs << "Gold: " << p.Gold << endl;
+    ofs << "Position: " << p.x << "," << p.y << endl;
+    ofs << "Key: " << p.Key << endl;
+    ofs << "Level: " << p.Level << endl;
+    ofs<<"Time: "<<GetTime()<<endl;
+    ofs.close();
+}
+```
+The initial information of a Player if you want a new one:
+```bash
+Player NewPlayer(){
+    // Give the player initial data
+    Player newPlayer;
+    newPlayer.Health = 5;
+    newPlayer.Shield = 0;
+    newPlayer.Gold = 0;
+    getPlayerPosition(newPlayer.x, newPlayer.y);
+    newPlayer.Key = false;
+    newPlayer.Level = 1;
+    return newPlayer;
+}
+```
 
 
