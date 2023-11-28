@@ -40,25 +40,32 @@ Enjoy the thrill and challenge of Haunted Escape, where every move is a step clo
 
 ## Features implemented
 1. Generation of random game sets or events
+
 The generation of map is completely ramdom, including landscapes and all objects inside the map. (see generate_map.cpp)
 
 2. Data structures for storing game status
+
 We use `string status` to store game status. There will be only one game status each time. The game status change only when some logic trigger the change of `status`. (see GameStatus.cpp)
 <img width="416" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/122252536/9418544b-b62b-492d-b35e-d8cf56c78109">
 
 3. Dynamic memory management
+
 We dynamically manage the memory for the information data of the player (see void ChangeXXX in Player.cpp)
 
 4. File input/output
+
 The data of player and map are also stored in player.log and map.log for visualized debugging and data storage. It is needed when the game level changes. (see Player.cpp get_map.cpp and set_map.cpp)
 
 5. Program codes in multiple files
+
 We separate different modules of the program into various files.
 
 6. Proper indentation and naming styles
+
 The naming of functions are clear and can be immediately understood.
 
 7. In-code documentation
+
 All functions have comments on its input/output and how they work.
 
 ### Non-standard libraries
@@ -134,6 +141,7 @@ Player NewPlayer(){
         cleanAndGetBlankSpace(localMap, blankSpaceArr, moveableSpace);
         isConnected = isBlankSpaceConnected(localMap, blankSpaceArr);
     }
+```
 
 4. InGamePlayerMove.cpp/InShopPlayerMove.cpp
 - decide what player does according to the keyboard input
