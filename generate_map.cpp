@@ -269,14 +269,3 @@ void generateRandomMap(char map[25][100]) {
         }
     }
 }
-
-
-
-// int main() {
-//     char map[25][100] = {}; // Initialize the char array.
-
-//     generateRandomMap(map);
-//     printMap(map);
-
-//     return 0;
-// }

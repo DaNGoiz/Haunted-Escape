@@ -116,13 +116,3 @@ void printMap(char map[25][100]) {
         cout << endl;
     }
 }
-
-// int main() {
-//     char map[25][100] = {};
-
-//     newMap(map);
-
-//     printMap(map);
-
-//     return 0;
-// }
