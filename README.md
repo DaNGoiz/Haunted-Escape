@@ -71,10 +71,13 @@ Used standard libraries only.
 - Print the information data of Player on Player.log
 - Change the information data of Player on Player.log
 - Get each information data of Player from Player.log
+  
 The Structure of a Player is like below:
 <img width="337" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/146114365/23b304f0-3d23-4a34-9690-69592e47c9c8">
+
 The function to convert the Player's data into Player.log:
 <img width="407" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/146114365/a2dd1ac9-b6ce-40e3-9346-c90241422d57">
+
 The initial information data of a Player if you want a new one:
 <img width="367" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/146114365/28308d8a-9c27-4d82-b690-8034dfb59bdc">
 
