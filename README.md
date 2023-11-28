@@ -39,35 +39,38 @@ Press 'w/a/s/d' to move around.
 Enjoy the thrill and challenge of Haunted Escape, where every move is a step closer to freedom or doom! 🎲🕯️👣
 
 ## Features implemented
-Generation of random game sets or events
+1. Generation of random game sets or events
+The generation of map is completely ramdom, including landscapes and all objects inside the map. (see generate_map.cpp)
 
-Data structures for storing game status
-
+2. Data structures for storing game status
+We use `string status` to store game status. There will be only one game status each time. The game status change only when some logic trigger the change of `status`. (see GameStatus.cpp)
 <img width="416" alt="image" src="https://github.com/DaNGoiz/COMP2113-Group6/assets/122252536/9418544b-b62b-492d-b35e-d8cf56c78109">
 
-Dynamic memory management
-- We dynamically manage the memory for the information data of the player (see void ChangeXXX in Player.cpp)
+3. Dynamic memory management
+We dynamically manage the memory for the information data of the player (see void ChangeXXX in Player.cpp)
 
-File input/output
+4. File input/output
+The data of player and map are also stored in player.log and map.log for visualized debugging and data storage. It is needed when the game level changes. (see Player.cpp get_map.cpp and set_map.cpp)
 
-Program codes in multiple files
+5. Program codes in multiple files
+We separate different modules of the program into various files.
 
-Proper indentation and naming styles
+6. Proper indentation and naming styles
+The naming of functions are clear and can be immediately understood.
 
-In-code documentation
+7. In-code documentation
+All functions have comments on its input/output and how they work.
 
 ### Non-standard libraries
 Used standard libraries only.
 
 # 3. Class description
-1. UpdateInGameUI.cpp
-- Print the entire game frame
-- Print the map, playerstatus ,instruction and shop on the screen
-  
-2. print_pause_mennu.cpp
-- When player press 'p', the screen will be printed 'You have paused the game'.
+1. User interface
+- We print the entire game UI per frame.
+- When player is in game, UI prints the map, playerstatus ,instruction and optionally the shop on the screen
+- There are multiple files storing other state UI.
 
-3. Player.cpp
+2. Player.cpp
 - Print the information data of Player on Player.log
 - Change the information data of Player on Player.log
 - Get each information data of Player from Player.log
@@ -116,4 +119,25 @@ Player NewPlayer(){
 }
 ```
 
+3. Map Generation
+- The map generation is done in generate_map.cpp, which generate every important map elements needed. Also, there is a function to ensure all path are connected so that the player can get to the gate wherever they are generated. All the generations are gathered in `void generateRandomMap(char map[25][100])` in generate_map.cpp:
+```bash
+// Generate a blank map
+    char localMap[25][100];
+    int moveableSpace = 0;
+    int blankSpaceArr[25][100];
+    bool isConnected = false;
 
+    while (!isConnected || moveableSpace < 1000) {
+        initializeMap(localMap, '-');
+        generateBlankSpace(localMap);
+        cleanAndGetBlankSpace(localMap, blankSpaceArr, moveableSpace);
+        isConnected = isBlankSpaceConnected(localMap, blankSpaceArr);
+    }
+
+    // Generate terrain and objects
+    generateWalls(localMap);
+    generateGrass(localMap);
+    generateMapElements(localMap, blankSpaceArr);
+    generateItems(localMap, blankSpaceArr);
+```
