@@ -87,7 +87,7 @@ int main(){
         else if (status == "LoadLevel"){
             clearMap(map);
             Timer(false);
-            player.key = 0;
+            player.Key = 0;
             newMap(map);
             int x, y;
             getPlayerPosition(x, y);
