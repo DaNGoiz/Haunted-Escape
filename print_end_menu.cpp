@@ -18,6 +18,6 @@ cout << R"(
 
 
     )";
-
+//Print the time spent on the game
 cout <<"You have used "<< GetTime()<<endl;
 }
