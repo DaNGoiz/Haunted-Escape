@@ -3,6 +3,7 @@
 using namespace std;
 
 void shopmenu(){
+//Tells the player they are entering the shop
 cout << R"(
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃     __   __                                        _            _               ┃
