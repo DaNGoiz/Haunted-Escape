@@ -4,6 +4,7 @@
 using namespace std;
 
 void printVictoryMenu(){
+//print Victory
 cout << R"(
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃        __     __             ____   _____   U  ___ u   ____     __   __          ┃
@@ -17,5 +18,6 @@ cout << R"(
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
     )";
+//Print the time spent on the game
 cout << "You have used " << GetTime()<<endl;
 }
