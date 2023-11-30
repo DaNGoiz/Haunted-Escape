@@ -93,7 +93,7 @@ struct Player {
     int Level;
 };
 ```
-The function to convert the Player's data into Player.log:
+The function to transport the Player's data into Player.log:
 ```bash
 void SetPlayerHelper(Player& p) {
     ofstream ofs("Player.log");
