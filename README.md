@@ -1,12 +1,8 @@
 # Haunted Escape
 ## 1. Team members of COMP2113-Group6
-Liu Xinyun (3035983665)
-
-Wang Yifu (3036098156)
-
-Xu Jingxiang (3036051550)
-
-Zhou Yuhong (3036037554)
+<a href="https://github.com/DaNGoiz/Haunted-Escape/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=DaNGoiz/Haunted-Escape" />
+</a>
 
 ## 2. How to play
 ### DEMO
